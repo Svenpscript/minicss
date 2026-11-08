@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Handleiding — minicss</title>
+  <script src="dist/theme-init.js"></script>
+  <link rel="stylesheet" href="dist/minicss.css">
+  <link rel="stylesheet" href="demo/demo.css">
+  <script type="module" src="demo/docs.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#inhoud">Naar de inhoud</a>
+  <header>
+    <nav aria-label="Hoofdnavigatie"><a class="wordmark"
+        href="index.html">mini<span>css</span></a><button type="button" aria-controls="hoofdmenu"
+        aria-expanded="false" aria-label="Navigatiemenu" hidden>Menu</button>
+      <ul id="hoofdmenu">
+        <li><a href="index.html">Componenten</a></li>
+        <li><a href="theme.html">Thema-editor</a></li>
+        <li><a href="docs.html" aria-current="page">Handleiding</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main class="doc-layout" id="inhoud">
+    <h1>Klein beginnen.<br>Gericht aanpassen.</h1>
+    <p class="lead">Laad één stylesheet. Gebruik HTML die past bij de inhoud. Voeg alleen de interacties toe die je
+      project nodig heeft.</p>
+    <p><a href="README.md">Volledige technische documentatie</a> · <a href="TESTING.md">Uitgevoerde controles</a></p>
+    <nav aria-label="Op deze pagina">
+      <ul>
+        <li><a href="#installatie">Installatie</a></li>
+        <li><a href="#patronen">HTML-patronen</a></li>
+        <li><a href="#paginaheader">Paginaheader</a></li>
+        <li><a href="#elementen">Overige elementen</a></li>
+        <li><a href="#demoklassen">Demoklassen</a></li>
+        <li><a href="#variabelen">Variabelen</a></li>
+        <li><a href="#javascript">JavaScript</a></li>
+        <li><a href="#themas">Thema’s</a></li>
+        <li><a href="#bouwen">Bouwen &amp; browsers</a></li>
+      </ul>
+    </nav>
+    <p>Bij de HTML-fragmenten van de elementen zie je hieronder het echte resultaat met alleen minicss. De installatiefragmenten zijn kopieerbare configuratie en worden niet als voorbeeld uitgevoerd. De voorbeelden zijn apart weergegeven, zodat de extra vormgeving van deze handleiding ze niet beïnvloedt. Details, formulieren en dialogen zijn te bedienen; er worden geen gegevens verstuurd.</p>
+    <noscript><p>Schakel JavaScript in om de zichtbare voorbeelden naast de broncode te laden. De HTML-voorbeelden blijven hieronder leesbaar.</p></noscript>
+    <section id="installatie">
+      <h2>Installatie: wat voeg je toe?</h2>
+      <p>Voor de basisopmaak heb je alleen <code>minicss.min.css</code> nodig. Pico zit daarin: laad geen aparte Pico-stylesheet. Je website heeft geen Node, npm of buildstap nodig wanneer je de gebouwde bestanden uit <code>dist/</code> gebruikt.</p>
+      <h3>1. Kopieer de juiste bestanden</h3>
+      <div><table><thead><tr><th>Bestand uit dist/</th><th>Wanneer nodig?</th><th>Waarvoor?</th></tr></thead><tbody>
+        <tr><td><code>minicss.min.css</code></td><td>Altijd</td><td>Alle frameworkopmaak, inclusief responsieve layout en standaard licht/donker.</td></tr>
+        <tr><td><code>minicss.js</code></td><td>Optioneel</td><td>Mobiel menu, asidepaneel, dialogen, themabediening en formulierbeveiliging. Importeren als module en initialiseren.</td></tr>
+        <tr><td><code>theme-init.js</code></td><td>Bij een opgeslagen themakeuze</td><td>Past de eerder gekozen lichte/donkere stand toe voordat de CSS wordt getoond.</td></tr>
+        <tr><td><code>LICENSE</code> en <code>LICENSE.pico</code></td><td>Meekopieren</td><td>Licentievermeldingen van minicss en Pico.</td></tr>
+      </tbody></table></div>
+      <p>Een mogelijke bestandsindeling is hieronder weergegeven. De map <code>public/</code> is hier de webroot: wat daarin staat, is vanaf <code>/</code> bereikbaar. Bij een statische website kan de projectmap zelf de webroot zijn. Pas de URL's aan jouw indeling aan.</p>
+<pre><code>public/
+  assets/
+    minicss/
+      minicss.min.css
+      minicss.js       # optioneel
+      theme-init.js    # optioneel
+      LICENSE
+      LICENSE.pico
+    theme.css          # optioneel: export uit de thema-editor
+    app.css            # optioneel: eigen CSS
+    app.js             # optioneel: initialisatie en eigen bediening</code></pre><p><code>index.html</code>, <code>docs.html</code>, <code>demo/</code>, de thema-editor, ontwikkelbestanden en tests hoef je niet mee te nemen. <code>wordmark</code> en <code>footer-content</code> zijn alleen demo-opmaak. De gewone <code>.css</code> is leesbaar; <code>.min.css</code> heeft dezelfde werking en is kleiner.</p>
+      <h3>2. Alleen CSS: een volledige startpagina</h3>
+      <p>Dit is voldoende voor tekst, formulieren, knopvarianten, cards, grid, sticky asides en native details. Hiervoor hoef je geen JavaScript te laden of <code>init()</code> aan te roepen. Zonder handmatige keuze volgt licht/donker de systeemvoorkeur.</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang="nl"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;meta name="color-scheme" content="light dark"&gt;
+  &lt;title&gt;Mijn project&lt;/title&gt;
+  &lt;link rel="stylesheet" href="/assets/minicss/minicss.min.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;header&gt;
+    &lt;nav&gt;&lt;a href="/"&gt;Mijn project&lt;/a&gt;&lt;/nav&gt;
+  &lt;/header&gt;
+  &lt;main&gt;
+    &lt;h1&gt;Mijn eerste pagina&lt;/h1&gt;
+    &lt;p&gt;De basisopmaak werkt meteen.&lt;/p&gt;
+    &lt;button type="button" class="secondary outline"&gt;Een knop&lt;/button&gt;
+  &lt;/main&gt;
+  &lt;footer&gt;Mijn project&lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre><h3>3. Optioneel: voeg de bediening toe</h3>
+      <p>Wil je het mobiele menu, asidepaneel, dialogen, een themakeuze of bescherming tegen dubbele POST-verzending gebruiken? Kopieer dan ook <code>minicss.js</code> en maak <code>assets/app.js</code> met deze inhoud:</p>
+<pre><code>import { init } from '/assets/minicss/minicss.js';
+
+init();</code></pre><p>Voeg vervolgens dit modulescript toe vlak voor <code>&lt;/body&gt;</code> in je pagina. Het bundelbestand alleen laden voert <code>init()</code> niet automatisch uit.</p><pre><code>&lt;script type="module" src="/assets/app.js"&gt;&lt;/script&gt;</code></pre><p>Initialiseer eenmaal per pagina. <code>init()</code> herkent de aanwezige bediening en activeert ook de POST-formulierbeveiliging. Bij eigen AJAX-verwerking herstel je de laadstatus met <code>setProcessing(form, false)</code> in <code>finally</code>. Wil je alleen een bepaalde functie, importeer en initialiseer dan alleen die functie uit dezelfde bundel; zie <a href="#javascript">JavaScript</a> en de <a href="README.md#optioneel-javascript">volledige API</a>.</p>
+      <h3>4. Laadvolgorde van thema en eigen CSS</h3>
+      <p>Met een opgeslagen themakeuze, een eigen kleurthema en projectopmaak ziet de head er zo uit. Laat de optionele regels weg als je die bestanden niet gebruikt.</p>
+<pre><code>&lt;!-- Alleen bij een opgeslagen lichte/donkere keuze: voor alle CSS --&gt;
+&lt;script src="/assets/minicss/theme-init.js"&gt;&lt;/script&gt;
+
+&lt;!-- Eerst het framework --&gt;
+&lt;link rel="stylesheet" href="/assets/minicss/minicss.min.css"&gt;
+
+&lt;!-- Daarna je kleurthema, indien aanwezig --&gt;
+&lt;link rel="stylesheet" href="/assets/theme.css"&gt;
+
+&lt;!-- Als laatste je eigen projectopmaak, indien aanwezig --&gt;
+&lt;link rel="stylesheet" href="/assets/app.css"&gt;</code></pre><p><code>theme-init.js</code> is een gewoon script in de head, zonder <code>async</code>, <code>defer</code> of <code>type="module"</code>. Het moet de opgeslagen keuze kunnen toepassen voordat de stylesheet wordt getoond. Dit bestand vervangt de themabediening uit <code>minicss.js</code> niet.</p>
+      <p>Gebruik voor een gewone website altijd dezelfde basisstylesheet. De oude strict-classless- en fluid-classless-bestanden zijn vervallen. Voor volle breedte kun je <code>--mini-content-width: none</code> instellen. Alleen voor inbedding in een bestaande pagina is er <code>minicss.conditional.min.css</code>, als vervanging van de gewone CSS en met een <code>.minicss</code>-wrapper.</p>
+      <h3>5. Licht, donker en eigen kleurthema's</h3>
+      <p>De basisstylesheet bevat al licht en donker. Automatisch volgt de systeemvoorkeur. Voor een vaste weergave kun je de root instellen:</p>
+<pre><code>&lt;html lang="nl"&gt;                         &lt;!-- automatisch --&gt;
+&lt;html lang="nl" data-theme="light"&gt;      &lt;!-- vast licht --&gt;
+&lt;html lang="nl" data-theme="dark"&gt;       &lt;!-- vast donker --&gt;</code></pre><p>Dit zijn drie alternatieven: gebruik maar een html-element. Voor een vaste keuze die nooit mag worden overschreven, laat je <code>theme-init.js</code> en de themabediening weg. Wil je de bezoeker laten kiezen en die keuze bewaren? Voeg dan de optionele scripts uit stap 3 en 4 toe en plaats deze select ergens in de pagina:</p><pre><code>&lt;label&gt;Weergave
+  &lt;select name="theme"&gt;
+    &lt;option value="auto"&gt;Automatisch&lt;/option&gt;
+    &lt;option value="light"&gt;Licht&lt;/option&gt;
+    &lt;option value="dark"&gt;Donker&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;</code></pre><p>Voor een eigen palet open je de <a href="theme.html">thema-editor</a>, kies je basiskleuren en download je de CSS. Bewaar het bestand bijvoorbeeld als <code>assets/theme.css</code> en laad het na minicss, zoals in stap 4. De export bevat zowel licht als donker. Je kopieert de editor of kleur-JavaScriptmodule niet naar je website.</p><p>Wil je verschillende kleurversies, exporteer dan bijvoorbeeld <code>school-thema.css</code> en <code>project-thema.css</code>. Kies de gewenste stylesheet per pagina of project. Het frameworkbestand blijft hetzelfde; laad niet meerdere complete kleurthema's tegelijk. Zonder eigen thema gebruik je het meegeleverde standaardpalet.</p>
+      <h3>6. Frameworkversie, themaversie en browsercache</h3>
+      <p>Deze projectversie is <strong>minicss 0.1.0</strong>, gebaseerd op Pico CSS 2.1.1. De minificatie is geen andere versie: <code>minicss.css</code> en <code>minicss.min.css</code> hebben dezelfde werking. Een eigen kleurthema krijgt niet automatisch een versienummer; dat beheer je zelf.</p><p>Je kunt een versie aan de URL toevoegen. Zo krijgt een aangepast bestand een nieuwe URL en blijft de browser geen eerder gecachte kopie gebruiken. Een voorbeeld met de frameworkversie en een eigen themaversie:</p>
+<pre><code>&lt;script src="/assets/minicss/theme-init.js?v=0.1.0"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="/assets/minicss/minicss.min.css?v=0.1.0"&gt;
+&lt;link rel="stylesheet" href="/assets/theme.css?v=2026-11-08-1"&gt;
+&lt;script type="module" src="/assets/app.js?v=2026-11-08-1"&gt;&lt;/script&gt;</code></pre><p>Als je dit gebruikt, zet je het frameworkversienummer ook op de import in app.js:</p><pre><code>import { init } from '/assets/minicss/minicss.js?v=0.1.0';
+
+init();</code></pre><p>Verhoog de themaversie wanneer je een nieuwe export plaatst en de appversie wanneer je eigen scripts wijzigen. Kopieer bij een frameworkupdate de bij elkaar horende CSS- en JavaScriptbestanden samen en pas hun versie-URL's aan. Controleer daarna je eigen thema; genereer het opnieuw wanneer nieuwe kleurvariabelen nodig zijn. Gebruik je al een assetbundler met bestandsnamen op basis van de inhoud, dan verzorgt die de cachevernieuwing en hoef je geen versiequery toe te voegen.</p>
+    </section>
+    <section id="patronen"><h2>Minimale HTML-patronen</h2><h3>Grid als kleine uitzondering</h3><p>Een element vertelt niet of je kolommen wilt. Voeg daarvoor een keer <code>.grid</code> toe, ook op formulieren. De minimumkolombreedte en tussenruimte zijn instelbaar.</p><pre><code>&lt;div class="grid" style="--mini-grid-min: 20rem"&gt;
+  &lt;section&gt;&lt;h2&gt;Uitleg&lt;/h2&gt;&lt;p&gt;Inhoud.&lt;/p&gt;&lt;/section&gt;
+  &lt;form&gt;&lt;label&gt;Naam&lt;input name="name"&gt;&lt;/label&gt;&lt;/form&gt;
+&lt;/div&gt;</code></pre><h3>Aside links of rechts</h3><p>Een directe aside in main activeert automatisch de zijbalk. Zet de aside als eerste kind voor links, als laatste voor rechts. Op kleine schermen volgt de inhoud de documentvolgorde. Sticky en het eigen scrollgebied van een lange aside werken uitsluitend met CSS.</p><pre><code>&lt;main&gt;
+  &lt;aside&gt;&lt;h2&gt;Aanvullend&lt;/h2&gt;&lt;p&gt;Links van de inhoud.&lt;/p&gt;&lt;/aside&gt;
+  &lt;div&gt;&lt;h1&gt;Hoofdinhoud&lt;/h1&gt;&lt;p&gt;Inhoud.&lt;/p&gt;&lt;/div&gt;
+&lt;/main&gt;</code></pre><p>Een mobiel paneel is optioneel: voeg een knop met <code>aria-controls="aside-id"</code> en een sluitknop met <code>class="close"</code> toe. Zonder opener blijft de aside zichtbaar.</p><h3>Articles, details en tabellen</h3><pre><code>&lt;article&gt;Gewone inhoud.&lt;/article&gt;
+&lt;article&gt;&lt;header&gt;&lt;h2&gt;Card&lt;/h2&gt;&lt;/header&gt;&lt;p&gt;Inhoud.&lt;/p&gt;&lt;/article&gt;
+&lt;details&gt;&lt;summary&gt;Meer informatie&lt;/summary&gt;&lt;p&gt;Uitleg.&lt;/p&gt;&lt;/details&gt;
+&lt;div&gt;&lt;table&gt;&lt;tr&gt;&lt;th&gt;Naam&lt;/th&gt;&lt;th&gt;Waarde&lt;/th&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;A&lt;/td&gt;&lt;td&gt;B&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/div&gt;</code></pre><p>Een directe articleheader activeert cardopmaak. Details blijft native. Een div met alleen een tabel krijgt automatisch horizontaal scrollgedrag.</p><h3>Formulieren en knoppen</h3><pre><code>&lt;form action="/opslaan" method="post" class="grid"&gt;
+  &lt;label&gt;Naam&lt;input name="name" required&gt;&lt;/label&gt;
+  &lt;label&gt;Keuze&lt;select name="choice"&gt;&lt;option&gt;A&lt;/option&gt;&lt;/select&gt;&lt;/label&gt;
+  &lt;div&gt;&lt;button&gt;Opslaan&lt;/button&gt;&lt;button type="reset" class="outline"&gt;Wissen&lt;/button&gt;&lt;/div&gt;
+&lt;/form&gt;</code></pre><p>De aparte knoppenwrapper wordt automatisch een actierij. Labels kunnen hun veld bevatten; een extra for/id-koppeling is dan niet nodig. Hulpteksten en fouten met een expliciete koppeling behouden de benodigde id- en ARIA-attributen. Een fout direct bij een ongeldig veld wordt automatisch gemarkeerd; gebruik bij een afwijkende structuur een enkele <code>.error</code>.</p><pre><code>&lt;div class="actions"&gt;
+&lt;button&gt;Primair&lt;/button&gt;
+&lt;button class="secondary"&gt;Secundair&lt;/button&gt;
+&lt;button class="tertiary"&gt;Derde accent&lt;/button&gt;
+&lt;button class="outline"&gt;Omlijnd&lt;/button&gt;
+&lt;button class="borderless"&gt;Randloos&lt;/button&gt;
+&lt;button class="secondary outline"&gt;Secundair omlijnd&lt;/button&gt;
+&lt;button class="tertiary outline"&gt;Derde accent omlijnd&lt;/button&gt;
+&lt;a href="/projecten" class="button"&gt;Projecten&lt;/a&gt;
+&lt;a href="/projecten" class="button secondary"&gt;Secundaire linkknop&lt;/a&gt;
+&lt;a href="/projecten" class="button tertiary"&gt;Derde linkknop&lt;/a&gt;
+&lt;a href="/projecten" class="button secondary outline"&gt;Secundaire outline-link&lt;/a&gt;
+&lt;a href="/projecten" class="button tertiary outline"&gt;Derde outline-link&lt;/a&gt;
+&lt;/div&gt;</code></pre><p>Een navigatielink behoudt zijn linkbetekenis en begint met <code>class="button"</code>, gevolgd door de gewenste modifiers. Kleur (<code>secondary</code>, <code>tertiary</code>) en uiterlijk (<code>outline</code>, <code>borderless</code>) zijn combineerbaar, ook in navigatie. Outline gebruikt leesbare accenttekst en een bijpassende rand; hover, focus, active en de laadindicator volgen die kleur. In een volledig primaire paginaheader krijgen outline en randloos de contrasterende headertekstkleur.</p><p>Een losse actierij gebruikt zo nodig <code>.actions</code>; afwijkende samengestelde bediening <code>.group</code>. Een zoekformulier met directe <code>input type="search"</code> wordt automatisch samengesteld. Selects blijven native; <code>.classic</code> is alleen nodig om de klassieke picker af te dwingen.</p></section>
+    <section id="paginaheader">
+      <h2>Paginaheader: primaire lijn of achtergrond</h2>
+      <p>Elke directe header onder body krijgt standaard een horizontale onderlijn in de primaire kleur. Daarvoor is geen klasse nodig. Dit geldt ook zonder nav; headers in cards worden hierdoor niet gewijzigd.</p>
+      <h3>Standaard: primaire onderlijn</h3>
+      <pre><code>&lt;header&gt;
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Mijn project&lt;/a&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Projecten&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#"&gt;Over ons&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+      <h3>Alternatief: primaire achtergrond</h3>
+      <pre><code>&lt;header class="primary"&gt;
+  &lt;nav&gt;
+    &lt;a href="#"&gt;Mijn project&lt;/a&gt;
+    &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Projecten&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#"&gt;Over ons&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+      <p>Alleen <code>primary</code> toevoegen op de paginaheader. De achtergrond blijft exact de primaire kleur. Tekst, links, hover en focus worden automatisch afgestemd op de leesbare tekstkleur van dat accent, ook bij een lichte primaire kleur.</p>
+    </section>
+    <section id="elementen">
+      <h2>Overige gewone elementen</h2>
+      <p>Ook deze elementen krijgen hun basisopmaak zonder frameworkklassen. Attributen zoals type, name, value en max hebben hun gewone HTML-betekenis.</p>
+      <pre><code>&lt;h3&gt;Een tussenkop&lt;/h3&gt;
+&lt;p&gt;Gewone tekst met &lt;strong&gt;nadruk&lt;/strong&gt;, &lt;em&gt;klemtoon&lt;/em&gt;,
+  &lt;mark&gt;markering&lt;/mark&gt; en een &lt;a href="#meer"&gt;link&lt;/a&gt;.&lt;/p&gt;
+&lt;blockquote&gt;Een citaat met een eigen plaats in de tekst.&lt;/blockquote&gt;
+&lt;ul&gt;&lt;li&gt;Eerste punt&lt;/li&gt;&lt;li&gt;Tweede punt&lt;/li&gt;&lt;/ul&gt;
+&lt;ol&gt;&lt;li&gt;Eerste stap&lt;/li&gt;&lt;li&gt;Tweede stap&lt;/li&gt;&lt;/ol&gt;
+&lt;dl&gt;&lt;dt&gt;Begrip&lt;/dt&gt;&lt;dd&gt;Een korte omschrijving.&lt;/dd&gt;&lt;/dl&gt;
+&lt;p&gt;Gebruik &lt;code&gt;code&lt;/code&gt; en &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;S&lt;/kbd&gt;.&lt;/p&gt;
+&lt;fieldset&gt;
+  &lt;legend&gt;Voorkeuren&lt;/legend&gt;
+  &lt;label&gt;&lt;input type="checkbox" name="updates"&gt; Updates ontvangen&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="frequentie" value="dagelijks"&gt; Dagelijks&lt;/label&gt;
+  &lt;label&gt;&lt;input type="radio" name="frequentie" value="wekelijks" checked&gt; Wekelijks&lt;/label&gt;
+&lt;/fieldset&gt;
+&lt;label&gt;Toelichting&lt;textarea name="toelichting" rows="2"&gt;&lt;/textarea&gt;&lt;/label&gt;
+&lt;label&gt;Intensiteit&lt;input type="range" name="intensiteit" value="60"&gt;&lt;/label&gt;
+&lt;label&gt;Voortgang&lt;progress value="60" max="100"&gt;60%&lt;/progress&gt;&lt;/label&gt;
+&lt;hr&gt;
+&lt;small&gt;Aanvullende informatie.&lt;/small&gt;</code></pre>
+    </section>
+    <section id="demoklassen">
+      <h2>Wat doen footer-content en wordmark?</h2>
+      <p>Deze twee klassen horen alleen bij de demonstratiesite. Hun CSS staat in <code>demo/demo.css</code>, niet in <code>dist/minicss.css</code>. Je hebt ze niet nodig om minicss te gebruiken.</p>
+      <dl>
+        <dt><code>wordmark</code></dt><dd>Maakt van de projectnaam een tekstlogo: Georgia, vet, iets groter en zonder onderstreping. De naam blijft op één regel; een span in die naam krijgt cursief en de linkkleur.</dd>
+        <dt><code>footer-content</code></dt><dd>Zet de onderdelen van de demofooter in een flexrij, met verticale uitlijning, tussenruimte en regelafbreking op smalle schermen. De alinea neemt de resterende ruimte in. Dit regelt niet de positie van de paginafooter; dat doet minicss zelf.</dd>
+      </dl>
+      <p>Hieronder staat exact dezelfde HTML tweemaal: eerst met alleen het framework, daarna met de extra demonstratieopmaak. Zo zie je welk bestand het verschil maakt.</p>
+      <pre id="demo-brand-source"><code>&lt;footer&gt;
+  &lt;div class="footer-content"&gt;
+    &lt;a class="wordmark" href="index.html"&gt;mini&lt;span&gt;css&lt;/span&gt;&lt;/a&gt;
+    &lt;p&gt;Mijn project, gebouwd met minicss.&lt;/p&gt;
+    &lt;a href="docs.html"&gt;Handleiding&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+    </section>
+    <section id="variabelen"><h2>Gericht aanpassen</h2><pre><code>:root { --mini-content-width: 76rem; --mini-radius: .6rem; }
+form.grid { --mini-grid-min: 14rem; --mini-grid-gap: 1rem; }
+main { --mini-sidebar-width: 17rem; }</code></pre><p>Breedte, tussenruimte, lettergrootte, afronding en kleuren zijn afzonderlijk instelbaar. Je kunt deze waarden in je stylesheet zetten; inline style is geen vereiste. Zie de <a href="README.md">volledige variabelenlijst</a>.</p></section>
+    <section id="javascript"><h2>Bediening zonder dubbele haken</h2><p>Initialiseer de kleine modules alleen waar nodig. Een menuknop gebruikt aria-controls om naar de menulijst in dezelfde nav te verwijzen. Dezelfde koppeling opent een aside of dialog. Interne toestanden beheert de module zelf.</p><pre><code>&lt;button type="button" aria-controls="bericht"&gt;Open bericht&lt;/button&gt;
+&lt;dialog id="bericht" aria-label="Bericht"&gt;
+  &lt;p&gt;Je wijziging is opgeslagen.&lt;/p&gt;
+  &lt;form method="dialog"&gt;&lt;button&gt;Sluiten&lt;/button&gt;&lt;/form&gt;
+&lt;/dialog&gt;</code></pre><pre><code>import { init, setProcessing } from '/assets/minicss.js';
+init();
+// Na een afgeronde AJAX-actie, ook bij fouten:
+setProcessing(form, false);</code></pre><p>De formuliermodule beschermt POST-formulieren automatisch tegen dubbele verzending, inclusief later toegevoegde formulieren. GET-formulieren blijven vrij. Native dialoogsluiting gebruikt method="dialog"; een annuleerknop in een POST-formulier gebruikt formmethod="dialog" en formnovalidate. Je applicatie bepaalt nog steeds wanneer opslaan slaagt en wanneer de laadstatus wordt hersteld.</p><p>Een gelabelde select met <code>name="theme"</code> en opties auto/light/dark bedient de themakeuze. Zonder JavaScript volgt de pagina de systeemvoorkeur. Meldingen maken hun eigen markup; in je pagina is geen aparte meldingcontainer nodig.</p></section>
+    <section id="themas"><h2>Een thema maken</h2><p>De <a href="theme.html">thema-editor</a> laat je primaire kleur, onafhankelijke extra accenten en optionele achtergrond- en tekstkleuren kiezen. Hover, active, knoptekst, links, randen en focus worden automatisch afgeleid. Geavanceerde correcties zijn optioneel. De editor controleert de afgeronde kleuren in licht en donker en exporteert gewone CSS. Je website heeft de kleurmodule niet nodig. Contrastcontrole is geen volledige toegankelijkheidsaudit.</p></section>
+    <section id="bouwen"><h2>Bouwen en controleren</h2><p>Pico CSS 2.1.1 is de vastgelegde basis. De build maakt de gewone stylesheet, een scoped export, minificaties en losse JavaScriptmodules. Breekpunten staan in build.config.mjs; CSS-variabelen kunnen geen querygrenzen vervangen.</p><p>Zie <a href="TESTING.md">het verificatieverslag</a> voor de daadwerkelijk uitgevoerde browser-, toetsenbord-, fallback- en contrastcontroles.</p></section>
+  </main>
+  <footer>
+    <div class="footer-content"><a class="wordmark" href="index.html">mini<span>css</span></a>
+      <p>Gebaseerd op Pico CSS 2.1.1. MIT.</p><a href="README.md">Volledige documentatie</a>
+    </div>
+  </footer>
+</body>
+
+</html>

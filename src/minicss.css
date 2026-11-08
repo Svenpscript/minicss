@@ -1,0 +1,297 @@
+__THEMES__
+
+:where(:root, [data-theme]) {
+  --mini-radius: .6rem;
+  --mini-space: 1rem;
+  --mini-font-size: 100%;
+  --mini-text-small: .875rem;
+  --mini-heading-1: clamp(2.25rem, 5vw, 3.5rem);
+  --mini-heading-2: 1.75rem;
+  --mini-content-width: 76rem;
+  --mini-gutter: clamp(1rem, 3vw, 2rem);
+  --mini-control-height: 2.75rem;
+  --mini-control-padding: .625rem 1rem;
+  --mini-grid-min: 16rem;
+  --mini-grid-gap: 1.5rem;
+  --mini-sidebar-width: 17rem;
+  --mini-main-min: 28rem;
+  --mini-sidebar-gap: 3rem;
+  --mini-aside-gap: 1rem;
+  --mini-aside-offset: 0px;
+  --mini-form-width: 100%;
+  --mini-nav-sticky: sticky;
+  --mini-nav-height: 4rem;
+  --mini-header-space: .5rem;
+  --mini-footer-space: .75rem;
+  --pico-font-size: var(--mini-font-size);
+  --pico-border-radius: var(--mini-radius);
+  --pico-spacing: var(--mini-space);
+  --pico-background-color: var(--mini-background);
+  --pico-color: var(--mini-text);
+  --pico-h1-color: var(--mini-text);
+  --pico-h2-color: var(--mini-text);
+  --pico-h3-color: var(--mini-text);
+  --pico-h4-color: var(--mini-text);
+  --pico-h5-color: var(--mini-text);
+  --pico-h6-color: var(--mini-text);
+  --pico-muted-color: var(--mini-muted);
+  --pico-muted-border-color: var(--mini-border);
+  --pico-primary: var(--mini-link);
+  --pico-primary-hover: var(--mini-link-hover);
+  --pico-primary-background: var(--mini-primary);
+  --pico-primary-hover-background: var(--mini-primary-hover);
+  --pico-primary-border: var(--mini-primary-border);
+  --pico-primary-hover-border: var(--mini-primary-hover-border);
+  --pico-primary-inverse: var(--mini-primary-text);
+  --pico-primary-focus: var(--mini-focus);
+  --pico-secondary: var(--mini-secondary);
+  --pico-secondary-background: var(--mini-secondary);
+  --pico-secondary-hover: var(--mini-secondary-hover);
+  --pico-secondary-hover-background: var(--mini-secondary-hover);
+  --pico-secondary-border: var(--mini-secondary-border);
+  --pico-secondary-hover-border: var(--mini-secondary-hover-border);
+  --pico-secondary-inverse: var(--mini-secondary-text);
+  --pico-form-element-background-color: var(--mini-surface);
+  --pico-form-element-selected-background-color: var(--mini-primary);
+  --pico-form-element-border-color: var(--mini-border);
+  --pico-form-element-color: var(--mini-text);
+  --pico-form-element-placeholder-color: var(--mini-muted);
+  --pico-form-element-active-background-color: var(--mini-surface);
+  --pico-form-element-active-border-color: var(--mini-focus);
+  --pico-form-element-invalid-border-color: var(--mini-error);
+  --pico-form-element-invalid-active-border-color: var(--mini-error);
+  --pico-form-element-valid-border-color: var(--mini-success);
+  --pico-card-background-color: var(--mini-surface);
+  --pico-card-sectioning-background-color: var(--mini-surface-alt);
+  --pico-code-background-color: var(--mini-surface-alt);
+  --pico-code-color: var(--mini-text);
+  --pico-table-border-color: var(--mini-border);
+  --pico-table-row-stripped-background-color: var(--mini-surface-alt);
+  --pico-range-border-color: var(--mini-border);
+  --pico-range-active-border-color: var(--mini-primary);
+  --pico-range-thumb-color: var(--mini-primary);
+  --pico-range-thumb-active-color: var(--mini-primary-hover);
+}
+:where(html) { font-size: var(--mini-font-size); scroll-padding-top: calc(var(--mini-nav-offset, var(--mini-nav-height)) + 1rem); }
+:where(body) { min-height: 100dvh; display: flex; flex-direction: column; margin: 0; color: var(--mini-text); background: var(--mini-background); overflow-wrap: anywhere; }
+:where(body:has(> header nav)) { --mini-aside-offset: calc(var(--mini-nav-height) + 2 * var(--mini-header-space) + 1px); }
+:where(body > header) { padding-block: var(--mini-header-space); background: var(--mini-background); border-bottom: 1px solid var(--mini-primary); }
+:where(body > main) { flex: 1; padding-block: 3rem; }
+:where(body > footer) { padding-block: var(--mini-footer-space); margin-top: auto; border-top: 1px solid var(--mini-border); color: var(--mini-muted); }
+:where(*) { scrollbar-color: var(--mini-border) var(--mini-background); }
+:where(*:focus-visible) { outline: 3px solid var(--mini-focus); outline-offset: 3px; box-shadow: none; }
+:where([id], :focus) { scroll-margin-top: calc(var(--mini-nav-offset, var(--mini-nav-height)) + 1rem); }
+::selection { color: var(--mini-primary-text); background: var(--mini-primary); }
+:where(input, textarea) { caret-color: var(--mini-link); }
+:where(h1) { font-size: var(--mini-heading-1); line-height: 1.12; letter-spacing: -.025em; }
+:where(h2) { font-size: var(--mini-heading-2); }
+:where(h1, h2, h3) { text-wrap: balance; }
+:where(p) { max-width: 72ch; }
+:where(small, .muted) { color: var(--mini-muted); }
+:where(small) { font-size: var(--mini-text-small); }
+:where(a, [role=link]) { text-underline-offset: .2em; text-decoration-color: currentColor; }
+:where(img, video, svg) { max-width: 100%; }
+:where(pre, div:has(> table:only-child)) { max-width: 100%; overflow-x: auto; }
+:where(table) { font-variant-numeric: tabular-nums; overflow-wrap: normal; word-break: normal; hyphens: manual; }
+:where(body > main, body > footer, body > header > nav, .container) { width: 100%; max-width: var(--mini-content-width); margin-inline: auto; padding-inline: var(--mini-gutter); min-width: 0; }
+:where(.grid) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--mini-grid-min)), 1fr)); gap: var(--mini-grid-gap); }
+:where(.grid) > :where(*) { min-width: 0; }
+:where(form) { width: var(--mini-form-width); margin: 0 0 var(--mini-space); }
+:where(label) { display: block; }
+:where(label > :is(input, select, textarea)) { margin-top: .375rem; }
+:where(input:not([type=checkbox], [type=radio], [type=range]), select, textarea) { width: 100%; }
+:where(input:not([type=checkbox], [type=radio], [type=range]), select, textarea, [role=search], .group, form:has(> input[type=search])) { --pico-border-radius: var(--mini-radius); }
+:where(.error:is(p, small, span), :is(input, select, textarea)[aria-invalid=true] + small, label:has(> :is(input, select, textarea)[aria-invalid=true]) + small:only-of-type) { display: block; color: var(--mini-error); font-weight: 600; margin-block: .375rem 1rem; }
+:where(input[type=checkbox]:is(:checked, :indeterminate):not([role=switch])) { position: relative; background-image: none; background-color: var(--mini-primary); border-color: var(--mini-primary-border); }
+:where(input[type=checkbox]:is(:checked, :indeterminate):not([role=switch]))::after { content: ''; position: absolute; inset: 0; background-color: var(--mini-primary-text); mask: var(--pico-icon-checkbox) center / .75em auto no-repeat; }
+:where(input[type=checkbox]:indeterminate:not([role=switch]))::after { mask-image: var(--pico-icon-minus); }
+:where(input[type=checkbox][role=switch]:checked) { border-color: var(--mini-primary-border); }
+:where(input[type=checkbox][role=switch]:checked)::before { background-color: var(--mini-primary-text); }
+:where(.actions, form > :is(div, p):has(> button):not(:has(> :is(input, select, textarea, label, fieldset)))) { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; }
+:where(.actions > *, form > :is(div, p):has(> button):not(:has(> :is(input, select, textarea, label, fieldset))) > *) { margin: 0; }
+
+/* Color and appearance modifiers compose on native buttons and a.button. */
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button) {
+  --mini-button-bg: var(--mini-primary);
+  --mini-button-hover-bg: var(--mini-primary-hover);
+  --mini-button-active-bg: var(--mini-primary-active);
+  --mini-button-text: var(--mini-primary-text);
+  --mini-button-hover-text: var(--mini-button-text);
+  --mini-button-border: var(--mini-primary-border);
+  --mini-button-hover-border: var(--mini-primary-hover-border);
+  --mini-button-active-border: var(--mini-primary-active-border);
+  --mini-button-outline: var(--mini-link);
+  --mini-button-outline-hover: var(--mini-link-hover);
+  display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
+  height: auto; min-height: var(--mini-control-height); width: auto; margin: 0;
+  padding: var(--mini-control-padding); border: 1px solid var(--mini-button-border);
+  border-radius: var(--mini-radius); background: var(--mini-button-bg); color: var(--mini-button-text);
+  font: inherit; line-height: 1.5; text-align: center; text-decoration: none; vertical-align: middle; box-shadow: none;
+}
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(:hover, :focus-visible) { background: var(--mini-button-hover-bg); border-color: var(--mini-button-hover-border); color: var(--mini-button-hover-text); }
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(:active) { background: var(--mini-button-active-bg); border-color: var(--mini-button-active-border); }
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(.secondary) {
+  --mini-button-bg: var(--mini-secondary);
+  --mini-button-hover-bg: var(--mini-secondary-hover);
+  --mini-button-active-bg: var(--mini-secondary-active);
+  --mini-button-text: var(--mini-secondary-text);
+  --mini-button-border: var(--mini-secondary-border);
+  --mini-button-hover-border: var(--mini-secondary-hover-border);
+  --mini-button-active-border: var(--mini-secondary-active-border);
+  --mini-button-outline: var(--mini-secondary-outline);
+  --mini-button-outline-hover: var(--mini-secondary-outline);
+}
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(.tertiary) {
+  --mini-button-bg: var(--mini-tertiary);
+  --mini-button-hover-bg: var(--mini-tertiary-hover);
+  --mini-button-active-bg: var(--mini-tertiary-active);
+  --mini-button-text: var(--mini-tertiary-text);
+  --mini-button-border: var(--mini-tertiary-border);
+  --mini-button-hover-border: var(--mini-tertiary-hover-border);
+  --mini-button-active-border: var(--mini-tertiary-active-border);
+  --mini-button-outline: var(--mini-tertiary-outline);
+  --mini-button-outline-hover: var(--mini-tertiary-outline);
+}
+
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(.outline, .borderless) {
+  --mini-button-bg: transparent;
+  --mini-button-hover-bg: var(--mini-surface-alt);
+  --mini-button-active-bg: var(--mini-surface-alt);
+  --mini-button-text: var(--mini-button-outline);
+  --mini-button-hover-text: var(--mini-button-outline-hover);
+  --mini-button-border: var(--mini-button-outline);
+  --mini-button-hover-border: var(--mini-button-outline-hover);
+  --mini-button-active-border: var(--mini-button-outline-hover);
+}
+:where(button, [type=submit], [type=button], [type=reset], a[role=button], a.button):where(.borderless) { --mini-button-border: transparent; --mini-button-hover-border: transparent; --mini-button-active-border: transparent; }
+:where(.full-width) { width: 100%; }
+:where(.text-start) { text-align: start; justify-content: flex-start; }
+:where(:disabled, [aria-disabled=true]) { opacity: .65; cursor: not-allowed; }
+:where([aria-busy=true]):where(button, a, input) { position: relative; pointer-events: none; color: transparent; }
+:where([aria-busy=true]):where(button, a, input)::before { display: none; }
+:where(input[aria-busy=true]) { background-image: radial-gradient(circle, transparent 40%, var(--mini-button-text) 43% 60%, transparent 63%); background-position: center; background-size: 1.25rem 1.25rem; background-repeat: no-repeat; }
+:where(input[aria-busy=true]):where(.outline, .borderless) { background-image: radial-gradient(circle, transparent 40%, var(--mini-button-outline) 43% 60%, transparent 63%); }
+:where([aria-busy=true]):where(button, a)::after { content: ''; position: absolute; width: 1rem; height: 1rem; inset: 0; margin: auto; border: 2px solid var(--mini-button-text); border-right-color: transparent; border-radius: 50%; animation: mini-spin .8s linear infinite; }
+:where([aria-busy=true]):where(.outline, .borderless)::after { border-color: var(--mini-button-outline); border-right-color: transparent; }
+@keyframes mini-spin { to { transform: rotate(360deg); } }
+:where(.group, form:has(> input[type=search])) { display: flex; width: 100%; min-width: 0; }
+:where(.group, form:has(> input[type=search])) > :where(input, select, button, a[role=button]) { border-radius: 0; margin: 0; }
+:where(.group, form:has(> input[type=search])) > :where(input:not([type=submit], [type=button], [type=reset], [type=checkbox], [type=radio]), select) { flex: 1 1 0; width: auto; min-width: 0; }
+:where(.group, form:has(> input[type=search])) > :where(button, [type=submit], [type=button], [type=reset], a[role=button]) { flex: 0 0 auto; white-space: nowrap; }
+:where(.group, form:has(> input[type=search])) > :where(:first-child) { border-start-start-radius: var(--mini-radius); border-end-start-radius: var(--mini-radius); }
+:where(.group, form:has(> input[type=search])) > :where(:last-child) { border-start-end-radius: var(--mini-radius); border-end-end-radius: var(--mini-radius); }
+
+/* A direct header is the only automatic card trigger. */
+:where(article) { margin: 0 0 var(--mini-space); padding: 0; background: none; border: 0; box-shadow: none; }
+:where(article:has(> header)) { padding: 1.5rem; background: var(--mini-surface); border: 1px solid var(--mini-border); border-radius: var(--mini-radius); }
+:where(article:has(> header)) > :where(header, footer) { margin-inline: -1.5rem; padding: 1rem 1.5rem; background: var(--mini-surface-alt); }
+:where(article:has(> header)) > :where(header) { margin-top: -1.5rem; margin-bottom: 1.5rem; padding-block: .75rem; border-bottom: 1px solid var(--mini-border); border-radius: var(--mini-radius) var(--mini-radius) 0 0; }
+:where(article:has(> header)) > :where(header) > :where(:first-child) { margin-top: 0; }
+:where(article:has(> header)) > :where(footer) { margin-top: 1.5rem; margin-bottom: -1.5rem; border-top: 1px solid var(--mini-border); border-radius: 0 0 var(--mini-radius) var(--mini-radius); }
+:where(article > header > :last-child, article > footer > :last-child) { margin-bottom: 0; }
+:where(summary) { cursor: pointer; min-height: var(--mini-control-height); }
+
+/* Component queries use generated literals, never var() boundaries. */
+:where(body > main, .container):has(> aside) { container: mini-layout / inline-size; }
+:where(body > main, .container):has(> aside) > :where(aside) { margin-top: 2rem; min-width: 0; }
+:where([data-nav-toggle], [data-aside-open], aside .close) { display: none; }
+:where([data-aside-open][data-aside-ready]) { display: inline-flex; position: fixed; inset: auto var(--mini-gutter) calc(1rem + env(safe-area-inset-bottom, 0px)) auto; z-index: 30; max-width: calc(100% - 2 * var(--mini-gutter)); background: var(--mini-surface); color: var(--mini-link); border-color: var(--mini-border); box-shadow: 0 .25rem .75rem #0003; }
+:where([data-aside-open][data-aside-ready]):where(:hover, :focus-visible) { background: var(--mini-surface-alt); color: var(--mini-link-hover); }
+@media (max-width: calc(__SIDEBAR__ + 4rem)) {
+  :where(body:has([data-aside-open][data-aside-ready])) { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+}
+:where(body:has([data-aside-narrow] [data-aside-open][data-aside-ready])) { padding-bottom: calc(5rem + env(safe-area-inset-bottom, 0px)); }
+:where(aside[data-aside-ready]) { display: none; }
+:where(aside[data-panel-open]) { display: block; position: fixed; inset: 1rem 1rem 1rem auto; width: min(24rem, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); overflow-y: auto; z-index: 102; margin: 0; padding: 1.5rem; border: 1px solid var(--mini-border); border-radius: var(--mini-radius); background: var(--mini-surface); box-shadow: 0 1rem 3rem #0004; }
+:where(aside[data-panel-open] .close) { display: inline-flex; margin-bottom: 1rem; }
+:where([data-aside-backdrop]) { position: fixed; inset: 0; background: #0008; z-index: 101; backdrop-filter: blur(4px); }
+:where(body > main, .container):has(> aside) { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--mini-sidebar-gap); align-items: start; }
+:where(body > main, .container):has(> aside:first-child) { grid-template-columns: auto minmax(0, 1fr); }
+:where(body > main, .container):has(> aside) > :where(*) { grid-column: 1 / -1; min-width: 0; }
+@container mini-layout (min-width: __SIDEBAR__) {
+  :where(body > main, .container):not([data-aside-narrow]) > :where(:not(aside)) { grid-column: 1; grid-row: 1; min-width: 0; }
+  :where(body > main, .container):not([data-aside-narrow]) > :where(aside:not([data-panel-open])) { display: block; grid-column: 2; grid-row: 1; width: var(--mini-sidebar-width); margin-top: 0; position: sticky; align-self: start; top: calc(var(--mini-aside-offset) + var(--mini-aside-gap)); max-height: calc(100dvh - var(--mini-aside-offset) - 2 * var(--mini-aside-gap)); overflow-y: auto; scroll-margin-top: calc(var(--mini-aside-offset) + var(--mini-aside-gap)); scroll-margin-bottom: var(--mini-aside-gap); }
+  :where(body > main, .container):not([data-aside-narrow]):has(> aside:first-child) > :where(:not(aside)) { grid-column: 2; }
+  :where(body > main, .container):not([data-aside-narrow]):has(> aside:first-child) > :where(aside:not([data-panel-open])) { grid-column: 1; }
+  :where(body > main, .container):not([data-aside-narrow]) :where([data-aside-open]) { display: none; }
+}
+:where(body > header:has(nav)) { position: var(--mini-nav-sticky); inset-block-start: 0; z-index: 20; }
+:where(nav) { min-height: var(--mini-nav-height); flex-wrap: wrap; gap: 1rem; }
+:where(nav ul) { flex-wrap: wrap; gap: .25rem; margin: 0; }
+:where(nav li) { padding: 0; }
+:where(nav a:not(.button, [role=button]), nav form button:not(.secondary, .tertiary, .outline, .borderless), nav form input[type=submit]:not(.secondary, .tertiary, .outline, .borderless)) { display: inline-flex; align-items: center; min-height: var(--mini-control-height); margin: 0; padding: .625rem .75rem; border: 1px solid transparent; border-radius: var(--mini-radius); background: transparent; color: var(--mini-link); line-height: 1.5; text-decoration: none; font: inherit; box-shadow: none; }
+:where(nav a:not(.button, [role=button]), nav form button:not(.secondary, .tertiary, .outline, .borderless), nav form input[type=submit]:not(.secondary, .tertiary, .outline, .borderless)):where(:hover, :active, :focus-visible) { background: var(--mini-surface-alt); border-color: transparent; color: var(--mini-link-hover); }
+:where(nav form, form:not(:has(input:not([type=hidden], [type=submit], [type=button], [type=reset]), select, textarea, fieldset))) { display: inline-flex; align-items: center; width: auto; margin: 0; padding: 0; }
+:where(nav [aria-current=page]) { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .4em; }
+/* A primary page header supplies readable text, links and focus for its fill. */
+:where(body > header.primary) {
+  background: var(--mini-primary); color: var(--mini-primary-text);
+  --mini-text: var(--mini-primary-text);
+  --mini-muted: var(--mini-primary-text);
+  --mini-link: var(--mini-primary-text);
+  --mini-link-hover: var(--mini-primary-text);
+  --mini-surface-alt: var(--mini-primary-hover);
+  --mini-focus: var(--mini-primary-text);
+  --pico-color: var(--mini-primary-text);
+  --pico-primary: var(--mini-primary-text);
+  --pico-primary-hover: var(--mini-primary-text);
+  --pico-muted-color: var(--mini-primary-text);
+}
+:where(body > header.primary) :where(h1, h2, h3, h4, h5, h6) { color: var(--mini-primary-text); }
+:where(body > header.primary) :where(.outline, .borderless) { --mini-button-outline: var(--mini-primary-text); --mini-button-outline-hover: var(--mini-primary-text); }
+@media (max-width: __NAV__) {
+  :where(body > header:has(nav:not(:has([data-nav-ready])))) { position: static; }
+  :where(nav) { align-items: center; }
+  :where([data-nav-toggle][data-nav-ready]) { display: inline-flex; margin-left: auto; }
+  :where(nav:has([data-nav-ready]) [data-nav-menu]) { display: none; flex-basis: 100%; width: 100%; }
+  :where(nav:has([data-nav-ready]) [data-nav-menu][data-menu-open]) { display: flex; flex-direction: column; flex-wrap: nowrap; align-items: stretch; max-height: calc(100dvh - var(--mini-nav-offset, var(--mini-nav-height)) - 2rem); overflow-y: auto; }
+  :where([data-nav-menu] > li) { flex-shrink: 0; }
+  :where([data-nav-menu] a, [data-nav-menu] form, [data-nav-menu] button) { width: 100%; justify-content: flex-start; }
+}
+
+@supports (appearance: base-select) {
+  :where(select:not([multiple], [size], .classic)), :where(select:not([multiple], [size], .classic))::picker(select) { appearance: base-select; }
+  :where(select:not([multiple], [size], .classic)) { background-image: none; }
+  :where(select)::picker(select) { color: var(--mini-text); background: var(--mini-surface); border: 1px solid var(--mini-border); border-radius: var(--mini-radius); padding: .375rem; }
+  :where(select option) { padding: .625rem; border-radius: var(--mini-radius); }
+  :where(select option:checked, select option:hover) { color: var(--mini-primary-text); background: var(--mini-primary); }
+}
+
+:where(dialog) { inset: 0; width: min(38rem, calc(100% - 2rem)); max-width: none; max-height: calc(100dvh - 2rem); margin: auto; padding: 1.5rem; overflow: auto; border: 1px solid var(--mini-border); border-radius: var(--mini-radius); background: var(--mini-surface); color: var(--mini-text); box-shadow: 0 1rem 4rem #0004; }
+:where(dialog:not([open])) { display: none; }
+:where(dialog[open]) { display: block; }
+:where(dialog)::backdrop { background: #0008; backdrop-filter: blur(4px); }
+:where(form[method=dialog]) { display: contents; }
+:where(dialog > header) { display: flex; justify-content: space-between; gap: 1rem; align-items: start; margin-bottom: 1.5rem; }
+:where(dialog > header h2) { margin: .375rem 0 0; }
+:where(dialog > footer) { display: flex; gap: .75rem; justify-content: flex-end; flex-wrap: wrap; margin-top: 1.5rem; }
+:where([data-scroll-lock]) { overflow: hidden; }
+:where([data-notifications]) { position: fixed; z-index: 60; inset-block-start: calc(var(--mini-nav-offset, var(--mini-nav-height)) + 1rem); inset-inline-start: 1rem; width: min(25rem, calc(100% - 2rem)); pointer-events: none; }
+:where([data-notice]) { display: flex; gap: .75rem; align-items: start; margin: 0 0 .75rem; padding: 1rem; border: 1px solid var(--mini-border); border-radius: var(--mini-radius); background: var(--mini-surface); color: var(--mini-text); box-shadow: 0 .5rem 1.5rem #0002; pointer-events: auto; }
+:where([data-notice] p) { margin: .25rem 0 0; }
+:where([data-notice] [data-notice-close]) { margin-left: auto; flex-shrink: 0; }
+:where(.success) { --mini-result: var(--mini-success); }
+:where(.info) { --mini-result: var(--mini-info); }
+:where(.warning) { --mini-result: var(--mini-warning); }
+:where(.error) { --mini-result: var(--mini-error); }
+:where([data-notice]:is(.success, .warning, .error, .info) strong, dialog:is(.success, .warning, .error, .info) h2) { color: var(--mini-result); }
+:where(.sr-only, [data-live-region]) { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+:where([hidden]) { display: none !important; }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
+@media (forced-colors: active) {
+  :where(button, a[role=button], input, select, textarea, article:has(> header), [data-notice], dialog) { border: 1px solid ButtonText; }
+  :where(*:focus-visible) { outline-color: Highlight; }
+  :where(input[type=checkbox]:is(:checked, :indeterminate):not([role=switch]))::after { background-color: HighlightText; forced-color-adjust: none; }
+}
+@media print {
+  :where(body) { display: block; color: #000; background: #fff; padding-bottom: 0; }
+  :where(nav, [data-notifications], [data-live-region], [data-aside-open], aside .close, [aria-haspopup=dialog], .print-hide, dialog) { display: none !important; }
+  :where(body > main, .container):has(> aside) { display: block !important; }
+  :where(aside[data-aside-ready]) { display: block !important; }
+  :where(body > main, .container) > :where(aside) { position: static !important; inset: auto !important; max-height: none !important; overflow: visible !important; }
+  :where(article:has(> header)) { break-inside: avoid; box-shadow: none; }
+  :where(pre, table) { overflow: visible; white-space: pre-wrap; }
+  :where(body > header) { position: static; }
+}

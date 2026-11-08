@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <title>Thema-editor — minicss</title>
+  <script src="dist/theme-init.js"></script>
+  <link rel="stylesheet" href="dist/minicss.css">
+  <link rel="stylesheet" href="demo/demo.css">
+  <script type="module" src="demo/editor.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#inhoud">Naar de inhoud</a>
+  <header>
+    <nav aria-label="Hoofdnavigatie"><a class="wordmark"
+        href="index.html">mini<span>css</span></a><button type="button" aria-controls="hoofdmenu"
+        aria-expanded="false" aria-label="Navigatiemenu" hidden>Menu</button>
+      <ul id="hoofdmenu">
+        <li><a href="index.html">Componenten</a></li>
+        <li><a href="theme.html" aria-current="page">Thema-editor</a></li>
+        <li><a href="docs.html">Handleiding</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main id="inhoud">
+    <div class="editor-heading">
+      <div>
+        <h1>Jouw kleuren. De rest volgt.</h1>
+        <p class="lead">Kies de basiskleuren. minicss berekent de afgeleide kleuren en controleert licht en donker naast
+          elkaar.</p>
+      </div><label for="editor-thema">Editorweergave<select id="editor-thema" name="theme">
+          <option value="auto">Automatisch</option>
+          <option value="light">Licht</option>
+          <option value="dark">Donker</option>
+        </select></label>
+    </div>
+    <noscript>
+      <p>Deze ontwikkeltool heeft JavaScript nodig om kleuren te berekenen. Websites die het geëxporteerde thema
+        gebruiken, hebben de editor niet nodig.</p>
+    </noscript>
+    <div class="editor-layout">
+      <section class="editor-controls" aria-labelledby="bron-titel">
+        <h2 id="bron-titel">Basiskleuren</h2>
+        <form id="kleurinstellingen">
+          <div class="base-color-group"><label for="broncode">Primaire accentkleur</label>
+            <div class="color-code"><span id="source-swatch" aria-hidden="true"></span><input id="broncode"
+                name="source" value="#30476f" spellcheck="false" aria-describedby="bron-hulp bron-fout"></div><small
+              id="bron-hulp">Exacte hexkleur. Hover, active, knoptekst en randen worden automatisch berekend.</small>
+            <p id="bron-fout" class="error" hidden></p>
+            <details id="primary-refinement">
+              <summary>Primair verfijnen</summary>
+              <div class="color-wheel"><canvas id="kleurenwiel" width="250" height="250" role="img"
+                  aria-label="Kleurenwiel met 24 tinten en vijf intensiteitsniveaus. De schuiven en hexinvoer bieden vrije kleurkeuze met het toetsenbord."></canvas><span
+                  class="wheel-marker" aria-hidden="true"></span></div><label for="tint">Tint <output id="tint-waarde"
+                  for="tint"></output><input id="tint" type="range" min="0" max="360" step="1"
+                  value="164"></label><label for="chroma">Intensiteit <output id="chroma-waarde"
+                  for="chroma"></output><input id="chroma" type="range" min="0" max="0.32" step="0.001"
+                  value="0.08"></label><label for="lichtheid">Lichtheid <output id="lichtheid-waarde"
+                  for="lichtheid"></output><input id="lichtheid" type="range" min="0" max="1" step="0.005"
+                  value="0.48"></label><label for="neutralen">Bronkleur in neutralen <output id="neutralen-waarde"
+                  for="neutralen"></output><input id="neutralen" type="range" min="0" max="1" step="0.01"
+                  value="0.12"></label>
+            </details>
+          </div>
+          <div class="base-color-group"><label><input type="checkbox" id="accent-aan" checked> Tweede
+              accentkleur</label>
+            <div id="secondary-fields"><label for="accent-code">Kleurcode</label>
+              <div class="color-code"><span id="secondary-swatch" aria-hidden="true"></span><input id="accent-code"
+                  spellcheck="false" aria-describedby="accent-code-error"></div>
+              <p id="accent-code-error" class="error" hidden>Gebruik een ondoorzichtige hexkleur, zoals #bd9656.</p>
+              <details id="secondary-suggestion">
+                <summary>Kleur voorstellen</summary><label for="accent">Hoek tegenover primair <output
+                    id="accent-waarde" for="accent"></output><input id="accent" type="range" min="0" max="360"
+                    value="120"></label>
+                <p><output id="accent-suggestie" for="accent"></output></p><button type="button" class="outline"
+                  id="apply-accent">Gebruik voorstel</button>
+              </details>
+            </div>
+          </div>
+          <div class="base-color-group"><label><input type="checkbox" id="accent3-aan"> Derde accentkleur</label>
+            <div id="tertiary-fields" hidden><label for="accent3-code">Kleurcode</label>
+              <div class="color-code"><span id="tertiary-swatch" aria-hidden="true"></span><input id="accent3-code"
+                  spellcheck="false" aria-describedby="accent3-code-error" disabled></div>
+              <p id="accent3-code-error" class="error" hidden>Gebruik een ondoorzichtige hexkleur.</p>
+              <details id="tertiary-suggestion">
+                <summary>Kleur voorstellen</summary><label for="accent3">Hoek tegenover primair <output
+                    id="accent3-waarde" for="accent3"></output><input id="accent3" type="range" min="0" max="360"
+                    value="240" disabled></label>
+                <p><output id="accent3-suggestie" for="accent3"></output></p><button type="button" class="outline"
+                  id="apply-accent3" disabled>Gebruik voorstel</button>
+              </details>
+            </div>
+          </div>
+          <div class="base-color-group"><label><input type="checkbox" id="background-aan" checked> Eigen
+              achtergrondkleuren</label><small>Uitgeschakeld: automatisch licht en donker.</small>
+            <div id="background-fields" class="base-mode-grid" hidden><label for="background-light">Licht<input
+                  id="background-light" spellcheck="false" aria-describedby="background-light-error" disabled><small
+                  id="background-light-error" class="error" hidden>Gebruik een ondoorzichtige
+                  hexkleur.</small></label><label for="background-dark">Donker<input id="background-dark"
+                  spellcheck="false" aria-describedby="background-dark-error" disabled><small id="background-dark-error"
+                  class="error" hidden>Gebruik een ondoorzichtige hexkleur.</small></label></div>
+          </div>
+          <div class="base-color-group"><label><input type="checkbox" id="text-aan" checked> Eigen
+              tekstkleuren</label><small>Uitgeschakeld: automatisch leesbare tekst.</small>
+            <div id="text-fields" class="base-mode-grid" hidden><label for="text-light">Licht<input id="text-light"
+                  spellcheck="false" aria-describedby="text-light-error" disabled><small id="text-light-error"
+                  class="error" hidden>Gebruik een ondoorzichtige hexkleur.</small></label><label
+                for="text-dark">Donker<input id="text-dark" spellcheck="false" aria-describedby="text-dark-error"
+                  disabled><small id="text-dark-error" class="error" hidden>Gebruik een ondoorzichtige
+                  hexkleur.</small></label></div>
+          </div>
+        </form>
+      </section>
+      <div>
+        <div class="preview-pair">
+          <section class="theme-preview" data-theme="light" id="preview-light" aria-labelledby="licht-titel">
+            <h2 id="licht-titel">Licht</h2>
+            <p>Rustige oppervlakken, leesbare details.</p><a href="#contrast">Een link in de lopende tekst</a>
+            <article>
+              <header>
+                <h3>Je volgende project</h3>
+              </header>
+              <p>Een card met duidelijke tekst en een subtiele achtergrond.</p><label
+                for="licht-input">Projectnaam<input id="licht-input" placeholder="Een nieuw begin"></label><label
+                class="preview-checkbox"><input type="checkbox" checked> Voorkeur bewaren</label>
+              <div class="preview-actions"><button type="button" data-preview-button>Opslaan</button><button
+                  type="button" class="secondary" data-preview-button data-preview-secondary>Accent 2</button><button
+                  type="button" class="tertiary" data-preview-button data-preview-tertiary hidden>Accent 3</button>
+              </div><small class="accent-codes" data-accent-codes></small>
+              <footer><small>Secundaire tekst op een ander oppervlak.</small></footer>
+            </article>
+            <p data-preview-result><strong>Geslaagd:</strong> je project is opgeslagen.</p>
+          </section>
+          <section class="theme-preview" data-theme="dark" id="preview-dark" aria-labelledby="donker-titel">
+            <h2 id="donker-titel">Donker</h2>
+            <p>Een eigen balans voor minder omgevingslicht.</p><a href="#contrast">Een link in de lopende tekst</a>
+            <article>
+              <header>
+                <h3>Je volgende project</h3>
+              </header>
+              <p>Een card met duidelijke tekst en een subtiele achtergrond.</p><label
+                for="donker-input">Projectnaam<input id="donker-input" placeholder="Een nieuw begin"></label><label
+                class="preview-checkbox"><input type="checkbox" checked> Voorkeur bewaren</label>
+              <div class="preview-actions"><button type="button" data-preview-button>Opslaan</button><button
+                  type="button" class="secondary" data-preview-button data-preview-secondary>Accent 2</button><button
+                  type="button" class="tertiary" data-preview-button data-preview-tertiary hidden>Accent 3</button>
+              </div><small class="accent-codes" data-accent-codes></small>
+              <footer><small>Secundaire tekst op een ander oppervlak.</small></footer>
+            </article>
+            <p data-preview-result><strong>Geslaagd:</strong> je project is opgeslagen.</p>
+          </section>
+        </div>
+        <section id="contrast" class="editor-output" aria-labelledby="contrast-titel">
+          <h2 id="contrast-titel">Contrastcontrole</h2>
+          <p id="audit-summary" class="audit-summary" role="status" aria-live="polite"></p>
+          <p><small>Gewone tekst: minimaal 4,5:1. Grote tekst: 3:1; alle hier gegenereerde tekst voldoet aan 4,5:1.
+              Noodzakelijke randen en focus op aangrenzende oppervlakken: 3:1. Deze controle garandeert geen volledige
+              toegankelijkheid.</small></p>
+          <details>
+            <summary>Bekijk alle gecontroleerde combinaties</summary>
+            <div tabindex="0" role="region" aria-label="Contrastresultaten">
+              <table class="audit-table">
+                <thead>
+                  <tr>
+                    <th>Thema</th>
+                    <th>Combinatie</th>
+                    <th>Contrast</th>
+                    <th>Vereist</th>
+                    <th>Resultaat</th>
+                  </tr>
+                </thead>
+                <tbody id="audit-rows"></tbody>
+              </table>
+            </div>
+          </details>
+          <ul id="audit-errors"></ul>
+        </section>
+        <details id="advanced-colors" class="editor-output">
+          <summary>Geavanceerde kleuren <small id="override-count">Automatisch</small></summary>
+          <p>Alle afgeleide kleuren worden automatisch berekend. Pas hier alleen uitzonderingen aan. Deze correcties
+            blijven behouden bij gewijzigde basiskleuren.</p>
+          <div class="grid"><label for="override-mode">Thema<select id="override-mode">
+                <option value="light">Licht</option>
+                <option value="dark">Donker</option>
+              </select></label><label for="override-token">Variabele<select id="override-token"></select></label><label
+              for="override-value">Kleurcode<input id="override-value" spellcheck="false"
+                aria-describedby="override-error"></label></div>
+          <p id="override-error" class="error" hidden>Gebruik een geldige ondoorzichtige hexkleur.</p><button
+            type="button" class="outline" id="reset-overrides">Correcties wissen</button>
+        </details>
+        <section class="editor-output" aria-labelledby="export-titel">
+          <h2 id="export-titel">Klaar voor je stylesheet.</h2>
+          <p>Plaats deze variabelen na de minicss-stylesheet. De bronkleur blijft bewaard; je website heeft geen
+            kleur-JavaScript nodig.</p><label for="css-export">Gegenereerde CSS<textarea id="css-export" rows="9"
+              readonly spellcheck="false"></textarea></label>
+          <div class="sample-row" id="export-actions"><button type="button" id="copy-css">Kopieer CSS</button><button
+              type="button" class="outline" id="download-css">Download thema.css</button><span id="export-status"
+              role="status"></span></div>
+        </section>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div class="footer-content"><a class="wordmark" href="index.html">mini<span>css</span></a>
+      <p>De editor is een ontwikkeltool, geen runtime-afhankelijkheid.</p><a href="docs.html">Handleiding</a>
+    </div>
+  </footer>
+</body>
+
+</html>

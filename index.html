@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="nl">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light dark">
+  <meta name="description" content="minicss: een compact CSS-framework met semantische HTML, gebaseerd op Pico CSS.">
+  <title>minicss — de basis, goed geregeld</title>
+  <script src="dist/theme-init.js"></script>
+  <link rel="stylesheet" href="dist/minicss.css">
+  <link rel="stylesheet" href="demo/demo.css">
+  <script type="module" src="demo/demo.js"></script>
+</head>
+
+<body>
+  <a class="skip-link" href="#inhoud">Naar de inhoud</a>
+  <header>
+    <nav aria-label="Hoofdnavigatie">
+      <a class="wordmark" href="index.html" aria-label="minicss startpagina">mini<span>css</span></a>
+      <button type="button" aria-controls="hoofdmenu" aria-expanded="false" aria-label="Navigatiemenu" hidden>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"
+          aria-hidden="true">
+          <path d="M4 6h16M4 12h16M4 18h16" />
+        </svg> Menu
+      </button>
+      <ul id="hoofdmenu">
+        <li><a href="index.html" aria-current="page">Componenten</a></li>
+        <li><a href="theme.html">Thema-editor</a></li>
+        <li><a href="docs.html">Handleiding</a></li>
+        <li><a href="#formulier">Inloggen</a></li>
+        <li>
+          <form action="/demo/logout" method="post"><button type="submit">Afmelden</button></form>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <main id="inhoud">
+    <div>
+      <section class="intro" aria-labelledby="titel">
+        <h1 id="titel">De basis,<br>goed geregeld.</h1>
+        <p class="lead">Semantische HTML. Rustige standaardopmaak. Een klein framework dat ruimte laat voor jouw
+          project.</p>
+        <div class="actions"><a href="dist/minicss.min.css" download class="button">Download CSS</a><a
+            href="docs.html">Aan de slag <span aria-hidden="true">→</span></a></div>
+        <p class="version">minicss 0.1.0 · gebaseerd op Pico CSS 2.1.1 · MIT</p>
+        <button type="button" class="outline" aria-controls="paginamenu" aria-expanded="false" hidden>Op deze
+          pagina &amp; thema</button>
+      </section>
+
+      <section id="knoppen" class="specimen" aria-labelledby="knoppen-titel">
+        <h2 id="knoppen-titel">Eén maat. Elke actie.</h2>
+        <p>Een link navigeert, een knop voert een actie uit. Het uiterlijk blijft gelijk, ook in een formulier.</p>
+        <div class="sample-row"><button type="button" data-notify="success">Primaire actie</button><button type="button"
+            class="secondary" data-notify="info">Secundair</button><button type="button" class="outline"
+            data-notify="warning">Omlijnd</button><button type="button" class="borderless"
+            data-notify="info">Randloos</button></div>
+        <div class="sample-row"><button type="button" class="secondary outline">Secundair omlijnd</button><button type="button" class="tertiary outline">Derde accent omlijnd</button><a href="#formulier" class="button secondary outline">Secundaire outline-link</a><a href="#formulier" class="button tertiary outline">Derde outline-link</a></div>
+        <div class="sample-row"><a href="#formulier" class="button">Link als knop</a><input type="button"
+            value="Inputknop" data-notify="info"><button type="button" disabled>Niet beschikbaar</button><button
+            type="button" aria-busy="true" aria-disabled="true">Bezig met opslaan</button></div>
+        <form action="/demo/save" method="post">
+          <div class="sample-row"><button type="submit">Verzenden</button><input type="submit"
+              value="Submit-input"><button type="submit" class="secondary">Secundair</button><button type="submit"
+              class="outline">Omlijnd</button><button type="submit" class="borderless">Randloos</button></div>
+        </form>
+        <button type="button" class="borderless full-width text-start" data-notify="info">Randloos, volle breedte en
+          links uitgelijnd</button>
+        <label for="zoekterm">Samengestelde bediening</label>
+        <form role="search" action="#knoppen">
+          <input id="zoekterm" name="q" type="search" placeholder="Zoek een component"><button
+              type="submit">Zoeken</button>
+        </form>
+        <pre><code>&lt;button type="submit"&gt;Opslaan&lt;/button&gt;
+&lt;a href="/projecten" class="button"&gt;Projecten&lt;/a&gt;</code></pre>
+      </section>
+
+      <section id="articles" class="specimen" aria-labelledby="articles-titel">
+        <h2 id="articles-titel">Inhoud bepaalt de vorm.</h2>
+        <p>Alleen een directe <code>header</code> maakt van een article een card. Gewone inhoud krijgt ruimte zonder
+          extra verpakking.</p>
+        <div class="grid">
+          <article>
+            <h3>Een gewoon article</h3>
+            <p>Geen achtergrond, padding, rand of schaduw. Wel alle typografische basis.</p>
+            <section>
+              <header><strong>Een geneste header</strong></header>
+              <p>Deze header activeert geen card.</p>
+            </section>
+          </article>
+          <article>
+            <header>
+              <h3>Een card</h3>
+            </header>
+            <p>Een directe header activeert de achtergrond en rand.</p>
+            <footer><small>Een bijpassende directe footer.</small></footer>
+          </article>
+        </div>
+        <article id="footer-only">
+          <h3>Alleen een footer</h3>
+          <p>Een footer verandert het article niet in een card.</p>
+          <footer><small>Bijgewerkt voor deze demo.</small></footer>
+        </article>
+        <details>
+          <summary>Gewone details en summary</summary>
+          <p>De native browserbediening blijft intact. minicss voegt geen aparte accordeoncomponent toe.</p>
+        </details>
+        <ul>
+          <li>Een gewone lijst blijft een lijst.</li>
+          <li>Er is geen verplichte cardstructuur.</li>
+        </ul>
+      </section>
+
+      <section id="layout" class="specimen" aria-labelledby="layout-titel">
+        <h2 id="layout-titel">Kolommen die zelf passen.</h2>
+        <p>Het grid verdeelt directe kinderen, ongeacht hun elementtype. Ook als de beschikbare ruimte kleiner is dan de
+          minimale kolombreedte.</p>
+        <div class="grid layout-sample">
+          <section>
+            <h3>Uitleg links</h3>
+            <p>Deze thematische sectie staat rechtstreeks naast een formulier. Geen extra card nodig.</p>
+          </section>
+          <form action="/demo/save" method="post"><label for="grid-email">E-mailadres<input
+                id="grid-email" name="email" type="email" placeholder="jij@voorbeeld.be" required></label><button
+              type="submit">Aanmelden</button></form>
+          <div>
+            <h3>Neutrale layout</h3>
+            <p>Een div is geschikt wanneer de indeling geen eigen inhoudelijke betekenis heeft.</p>
+          </div>
+        </div>
+        <pre><code>&lt;div class="grid" style="--mini-grid-min: 16rem"&gt;
+  &lt;section&gt;…&lt;/section&gt;
+  &lt;form&gt;…&lt;/form&gt;
+&lt;/div&gt;</code></pre>
+        <h3>Een aanvullende aside</h3>
+        <div class="container secondary-layout">
+          <section>
+            <p>In dit smallere voorbeeld bevat de aside alleen aanvullende uitleg. Er is bewust geen mobiele
+              openingsknop.</p>
+          </section>
+          <aside aria-label="Aanvullende uitleg">
+            <h4>Goed om te weten</h4>
+            <p>Deze uitleg blijft ook bij weinig ruimte zichtbaar. Zonder gekoppelde openingsknop wordt de aside niet verborgen.</p>
+          </aside>
+        </div>
+      </section>
+
+      <section id="formulier" class="specimen" aria-labelledby="formulier-titel">
+        <h2 id="formulier-titel">Een formulier, zonder puzzelwerk.</h2>
+        <p>Standaard de volledige breedte. Activeer het veldgrid expliciet met <code>class="grid"</code>. Velden
+          vullen hun kolom.</p>
+        <form id="voorbeeldformulier" action="/demo/save" method="post" class="grid">
+          <label for="naam">Naam<input id="naam" name="name" autocomplete="name" placeholder="Je volledige naam"
+              required></label>
+          <label for="email">E-mailadres<input id="email" name="email" type="email" autocomplete="email"
+              aria-describedby="email-hulp" placeholder="jij@voorbeeld.be" required><small id="email-hulp">We gebruiken
+              dit alleen voor deze demonstratie.</small></label>
+          <label for="klassieke-select">Klassieke select<select id="klassieke-select" name="classic"
+              class="classic">
+              <option>Ontwerp</option>
+              <option>Ontwikkeling</option>
+              <option>Onderwijs</option>
+            </select></label>
+          <label for="moderne-select">Verbeterde native select<select id="moderne-select" name="modern">
+              <option>Ontwerp</option>
+              <option>Ontwikkeling</option>
+              <option>Onderwijs</option>
+            </select><small>Een opgemaakte picker waar ondersteund; elders de klassieke select.</small></label>
+          <div><label for="voorbeeld-fout">Voorbeeld van een fout<input id="voorbeeld-fout" value="geen geldig adres"
+                aria-invalid="true" aria-describedby="adres-fout"></label><small id="adres-fout" class="error">Fout:
+              vul een volledig adres in, met huisnummer.</small></div>
+          <div><label for="bericht">Toelichting<textarea id="bericht" name="message" rows="3"
+                placeholder="Wat wil je delen?"></textarea></label></div>
+          <div><button type="submit">Gegevens opslaan</button><button type="reset"
+              class="outline">Wissen</button><small role="status">Demo: er worden geen gegevens
+              bewaard.</small></div>
+        </form>
+      </section>
+
+      <section id="interacties" class="specimen" aria-labelledby="interacties-titel">
+        <h2 id="interacties-titel">Kleine interacties, zorgvuldig afgewerkt.</h2>
+        <p>Native dialogvensters voor taken die aandacht vragen. Tijdelijke meldingen voor feedback die je niet hoeft te
+          bevestigen.</p>
+        <h3>Dialogen</h3>
+        <div class="sample-row"><button type="button" aria-controls="berichtdialoog" hidden>Formulier openen</button><button
+            type="button" class="outline" aria-controls="bevestiging" hidden>Keuze bevestigen</button><button type="button"
+            class="borderless" aria-controls="foutdialoog" hidden>Foutmelding</button><button type="button"
+            class="borderless" aria-controls="succesdialoog" hidden>Succes bevestigen</button><button type="button"
+            class="borderless" aria-controls="infodialoog" hidden>Informatie bevestigen</button></div>
+        <h3>Resultaatmeldingen</h3>
+        <p>Nieuwe meldingen verschijnen onderaan. De timer pauzeert zolang je de melding aanwijst of erin focust.</p>
+        <div class="sample-row"><button type="button" class="outline" data-notify="success">Succes</button><button
+            type="button" class="outline" data-notify="info">Informatie</button><button type="button" class="outline"
+            data-notify="warning">Waarschuwing</button><button type="button" class="outline"
+            data-notify="error">Fout</button><button type="button" class="borderless" id="meldingstapel">Toon een
+            stapel</button></div>
+        <noscript>
+          <p>De basisopmaak werkt zonder JavaScript. Schakel JavaScript in om dialogen en tijdelijke meldingen te
+            demonstreren.</p>
+        </noscript>
+      </section>
+
+      <section id="typografie" class="specimen" aria-labelledby="type-titel">
+        <h2 id="type-titel">Ook de gewone dingen.</h2>
+        <p>Tekst, tabellen, code en de overige bruikbare Pico-basis blijven beschikbaar. <a href="docs.html">Lange links
+            mogen gewoon afbreken</a>.</p>
+        <blockquote>Een goede standaard helpt je beginnen. Variabelen geven je de ruimte om verder te gaan.<footer>Het
+            uitgangspunt van minicss</footer>
+        </blockquote>
+        <div tabindex="0" role="region" aria-label="Uitvoervarianten, horizontaal scrollbaar">
+          <table>
+            <thead>
+              <tr>
+                <th>Variant</th>
+                <th>Containers</th>
+                <th>Componenten</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Standaard</td>
+                <td>Automatische paginalandmarks</td>
+                <td>Semantische basis, minimale uitzonderingen</td>
+              </tr>
+              <tr>
+                <td>Conditional</td>
+                <td>Binnen <code>.minicss</code></td>
+                <td>Alle standaardmogelijkheden binnen de wrapper</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <aside id="paginamenu" aria-labelledby="aside-titel">
+      <button type="button" class="outline close">Paneel sluiten</button>
+      <h2 id="aside-titel">Op deze pagina</h2>
+      <ul>
+        <li><a href="#knoppen">Knoppen &amp; acties</a></li>
+        <li><a href="#articles">Articles &amp; cards</a></li>
+        <li><a href="#layout">Containers &amp; grid</a></li>
+        <li><a href="#formulier">Formulieren &amp; selects</a></li>
+        <li><a href="#interacties">Dialogen &amp; meldingen</a></li>
+        <li><a href="#typografie">Typografie &amp; tabellen</a></li>
+      </ul>
+      <label for="themakeuze">Weergave<select id="themakeuze" name="theme">
+          <option value="auto">Automatisch</option>
+          <option value="light">Licht</option>
+          <option value="dark">Donker</option>
+        </select></label>
+      <hr>
+      <h3>Jouw kleur, jouw basis.</h3>
+      <p>Maak een licht en donker thema met controle op tekst, randen en bediening.</p><a href="theme.html">Open de
+        thema-editor →</a>
+      <p class="aside-note"><small>Dit menu en de weergavekeuze staan één keer in de HTML. Op kleine schermen openen ze
+          als paneel.</small></p>
+    </aside>
+  </main>
+  <footer>
+    <div class="footer-content"><a class="wordmark" href="index.html">mini<span>css</span></a>
+      <p>Een kleine basis. Ruimte voor eigen keuzes.</p><a href="LICENSE.pico">Pico-licentie</a><a
+        href="README.md">Documentatie</a>
+    </div>
+  </footer>
+
+  <dialog id="berichtdialoog" aria-labelledby="bericht-titel">
+    <header>
+      <h2 id="bericht-titel">Een bericht maken</h2><form method="dialog"><button type="submit" class="borderless" 
+        aria-label="Dialoog sluiten">Sluit</button></form>
+    </header>
+    <form action="/demo/save" method="post">
+      <label for="onderwerp">Onderwerp<input id="onderwerp" name="subject" required autofocus></label>
+      <label for="modal-bericht">Bericht<textarea id="modal-bericht" name="message" rows="5"
+          required></textarea></label>
+      <p role="status">Na opslaan blijft dit venster open, zodat je het resultaat kunt lezen.</p>
+      <div><button type="submit">Bericht opslaan</button><button type="submit" formmethod="dialog" formnovalidate class="outline"
+          >Annuleren</button></div>
+    </form>
+  </dialog>
+  <dialog id="bevestiging" class="warning" aria-labelledby="bevestiging-titel">
+    <header>
+      <h2 id="bevestiging-titel">Waarschuwing: concept wissen?</h2><form method="dialog"><button type="submit" class="borderless"
+         aria-label="Dialoog sluiten">Sluit</button></form>
+    </header>
+    <p>Deze demonstratie vraagt om een expliciete keuze. Er worden geen echte gegevens verwijderd.</p>
+    <footer><form method="dialog"><button type="submit" class="outline" >Bewaren</button></form><button type="button"
+        id="bevestig-wissen">Concept wissen</button></footer>
+  </dialog>
+  <dialog id="foutdialoog" class="error" aria-labelledby="fout-titel">
+    <header>
+      <h2 id="fout-titel">Fout: opslaan niet gelukt</h2><form method="dialog"><button type="submit" class="borderless" 
+        aria-label="Dialoog sluiten">Sluit</button></form>
+    </header>
+    <p>Voorbeeldmelding: de verbinding is onderbroken. Je invoer blijft beschikbaar. Sluit dit venster en probeer
+      opnieuw.</p>
+    <footer><form method="dialog"><button type="submit" >Begrepen</button></form></footer>
+  </dialog>
+  <dialog id="succesdialoog" class="success" aria-labelledby="succes-titel">
+    <header>
+      <h2 id="succes-titel">Geslaagd: aanvraag ontvangen</h2><form method="dialog"><button type="submit" class="borderless" 
+        aria-label="Dialoog sluiten">Sluit</button></form>
+    </header>
+    <p>Voorbeeld: je aanvraag is ontvangen. Bevestig dat je dit resultaat hebt gelezen.</p>
+    <footer><form method="dialog"><button type="submit" >Bevestigen</button></form></footer>
+  </dialog>
+  <dialog id="infodialoog" class="info" aria-labelledby="info-titel">
+    <header>
+      <h2 id="info-titel">Informatie: controleer je gegevens</h2><form method="dialog"><button type="submit" class="borderless"
+         aria-label="Dialoog sluiten">Sluit</button></form>
+    </header>
+    <p>Voorbeeld: controleer je contactgegevens voordat je verdergaat.</p>
+    <footer><form method="dialog"><button type="submit" >Begrepen</button></form></footer>
+  </dialog>
+</body>
+
+</html>
