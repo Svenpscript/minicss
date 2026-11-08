@@ -23,6 +23,7 @@
 .aside-note { margin-top: 2rem; }
 .footer-content { display: flex; align-items: center; flex-wrap: wrap; gap: 1.5rem; }
 .footer-content p { flex: 1; margin: 0; min-width: min(100%, 15rem); }
+.footer-content > nav { margin-inline-start: auto; min-height: 0; }
 .doc-layout { max-width: 62rem; }
 .doc-layout section { padding-block: 1.5rem; }
 .doc-layout h1 { max-width: 20ch; }

@@ -4,6 +4,10 @@ Uitgevoerd op 8 november 2026, Windows, Node.js 24.21.0, Playwright 1.61.1.
 
 ## Resultaten
 
+Na gelijktrekken van paginaheader en paginafooter: `npm run check` geslaagd, met **14 moduletests** en **126 browsertests** (42 scenario's per engine in Chromium, Firefox en WebKit). De nieuwe controle verifieert primaire, secundaire en tertiaire achtergronden met leesbare tekst, links, outlineknoppen en focus; onafhankelijke lijnkleuren en hun combinaties; de standaard primaire lijn; gelijke buitenbreedte en inhoudsuitlijning op 1440 en 320px; licht/donker; gewone en scoped minificaties; en ongewijzigde cardheaders en cardfooters. Desktop- en mobiele screenshots van de nieuwe varianten zijn visueel gecontroleerd.
+
+## Eerdere resultaten
+
 Na uitbreiding van de installatie-instructies: **9 gerichte browsertests geslaagd** in Chromium, Firefox en WebKit. De volledige installatiefragmenten worden als broncode getoond en niet in de voorbeeldframes uitgevoerd. Bestaande elementvoorbeelden, mobiele breedte, 200% tekstvergroting en minimale markup blijven gecontroleerd. De volledige suite is voor deze documentatiewijziging niet opnieuw uitgevoerd.
 
 Na de combineerbare knopmodifiers en primaire paginaheader: build geslaagd, **14 moduletests** en de volledige set van **123 browsertests geslaagd** (41 scenario's per engine). De nieuwe tests controleren primaire, secundaire en tertiaire outline op buttons, inputacties en linkknoppen, ook binnen nav, in licht/donker en de gewone/scoped minificaties. Default, hover, active en focus houden de gekozen accentkleur, met minimaal 4,5:1 voor tekst en 3:1 voor randen. De headercontrole test een primaire onderlijn met en zonder nav, een primaire achtergrond met contrasterende tekst/links/focus bij donkerblauw en helder geel, en ongewijzigde cardheaders.

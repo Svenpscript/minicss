@@ -26,6 +26,19 @@ test('header and footer are compact while navigation controls retain their click
   expect((await page.locator('body > header').boundingBox()).height).toBeLessThan(90);
   expect((await page.locator('body > footer').boundingBox()).height).toBeLessThan(80);
   for (const height of await page.locator('#hoofdmenu a, #hoofdmenu button').evaluateAll(els => els.map(el => el.getBoundingClientRect().height))) expect(height).toBeGreaterThanOrEqual(44);
+  for (const route of ['/', '/docs.html', '/theme.html']) {
+    await page.goto(route);
+    for (const width of [1920, 1440, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: 1000 });
+      const geometry = await page.evaluate(() => {
+        const header = document.querySelector('body > header > nav');
+        const footer = document.querySelector('body > footer nav');
+        return { expectedRight: header.getBoundingClientRect().right - parseFloat(getComputedStyle(header).paddingRight), actualRight: footer.getBoundingClientRect().right, overflow: document.documentElement.scrollWidth > innerWidth };
+      });
+      expect(geometry.actualRight, route + ' at ' + width).toBeCloseTo(geometry.expectedRight, 0);
+      expect(geometry.overflow).toBe(false);
+    }
+  }
 });
 
 test('editor preserves exact accent colors, enables a third accent and snaps wheel cells only', async ({ page }) => {

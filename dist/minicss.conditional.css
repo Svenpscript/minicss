@@ -2660,7 +2660,7 @@ textarea:where(.minicss, .minicss *),
 :where(:where(.minicss):has(> header nav)):where(.minicss, .minicss *) { --mini-aside-offset: calc(var(--mini-nav-height) + 2 * var(--mini-header-space) + 1px); }
 :where(:where(.minicss) > header):where(.minicss, .minicss *) { padding-block: var(--mini-header-space); background: var(--mini-background); border-bottom: 1px solid var(--mini-primary); }
 :where(:where(.minicss) > main):where(.minicss, .minicss *) { flex: 1; padding-block: 3rem; }
-:where(:where(.minicss) > footer):where(.minicss, .minicss *) { padding-block: var(--mini-footer-space); margin-top: auto; border-top: 1px solid var(--mini-border); color: var(--mini-muted); }
+:where(:where(.minicss) > footer):where(.minicss, .minicss *) { padding-block: var(--mini-footer-space); margin-top: auto; border-top: 1px solid var(--mini-primary); background: var(--mini-background); color: var(--mini-text); }
 :where(*):where(.minicss, .minicss *) { scrollbar-color: var(--mini-border) var(--mini-background); }
 :where(*:focus-visible):where(.minicss, .minicss *) { outline: 3px solid var(--mini-focus); outline-offset: 3px; box-shadow: none; }
 :where([id], :focus):where(.minicss, .minicss *) { scroll-margin-top: calc(var(--mini-nav-offset, var(--mini-nav-height)) + 1rem); }
@@ -2676,7 +2676,7 @@ textarea:where(.minicss, .minicss *),
 :where(img, video, svg):where(.minicss, .minicss *) { max-width: 100%; }
 :where(pre, div:has(> table:only-child)):where(.minicss, .minicss *) { max-width: 100%; overflow-x: auto; }
 :where(table):where(.minicss, .minicss *) { font-variant-numeric: tabular-nums; overflow-wrap: normal; word-break: normal; hyphens: manual; }
-:where(:where(.minicss) > main,:where(.minicss) > footer,:where(.minicss) > header > nav, .container):where(.minicss, .minicss *) { width: 100%; max-width: var(--mini-content-width); margin-inline: auto; padding-inline: var(--mini-gutter); min-width: 0; }
+:where(:where(.minicss) > main,:where(.minicss) > footer > div,:where(.minicss) > header > nav, .container):where(.minicss, .minicss *) { width: 100%; max-width: var(--mini-content-width); margin-inline: auto; padding-inline: var(--mini-gutter); min-width: 0; }
 :where(.grid):where(.minicss, .minicss *) { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, var(--mini-grid-min)), 1fr)); gap: var(--mini-grid-gap); }
 :where(.grid) > :where(*):where(.minicss, .minicss *) { min-width: 0; }
 :where(form):where(.minicss, .minicss *) { width: var(--mini-form-width); margin: 0 0 var(--mini-space); }
@@ -2806,22 +2806,41 @@ textarea:where(.minicss, .minicss *),
 :where(nav a:not(.button, [role=button]), nav form button:not(.secondary, .tertiary, .outline, .borderless), nav form input[type=submit]:not(.secondary, .tertiary, .outline, .borderless)):where(:hover, :active, :focus-visible):where(.minicss, .minicss *) { background: var(--mini-surface-alt); border-color: transparent; color: var(--mini-link-hover); }
 :where(nav form, form:not(:has(input:not([type=hidden], [type=submit], [type=button], [type=reset]), select, textarea, fieldset))):where(.minicss, .minicss *) { display: inline-flex; align-items: center; width: auto; margin: 0; padding: 0; }
 :where(nav [aria-current=page]):where(.minicss, .minicss *) { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: .4em; }
-/* A primary page header supplies readable text, links and focus for its fill. */
-:where(:where(.minicss) > header.primary):where(.minicss, .minicss *) {
-  background: var(--mini-primary); color: var(--mini-primary-text);
-  --mini-text: var(--mini-primary-text);
-  --mini-muted: var(--mini-primary-text);
-  --mini-link: var(--mini-primary-text);
-  --mini-link-hover: var(--mini-primary-text);
-  --mini-surface-alt: var(--mini-primary-hover);
-  --mini-focus: var(--mini-primary-text);
-  --pico-color: var(--mini-primary-text);
-  --pico-primary: var(--mini-primary-text);
-  --pico-primary-hover: var(--mini-primary-text);
-  --pico-muted-color: var(--mini-primary-text);
+/* Page header and footer share accent fills; line modifiers only change the divider. */
+:where(:where(.minicss) > :is(header, footer).primary):where(.minicss, .minicss *) {
+  --mini-landmark-background: var(--mini-primary);
+  --mini-landmark-text: var(--mini-primary-text);
+  --mini-landmark-hover: var(--mini-primary-hover);
 }
-:where(:where(.minicss) > header.primary) :where(h1, h2, h3, h4, h5, h6):where(.minicss, .minicss *) { color: var(--mini-primary-text); }
-:where(:where(.minicss) > header.primary) :where(.outline, .borderless):where(.minicss, .minicss *) { --mini-button-outline: var(--mini-primary-text); --mini-button-outline-hover: var(--mini-primary-text); }
+:where(:where(.minicss) > :is(header, footer).secondary):where(.minicss, .minicss *) {
+  --mini-landmark-background: var(--mini-secondary);
+  --mini-landmark-text: var(--mini-secondary-text);
+  --mini-landmark-hover: var(--mini-secondary-hover);
+}
+:where(:where(.minicss) > :is(header, footer).tertiary):where(.minicss, .minicss *) {
+  --mini-landmark-background: var(--mini-tertiary);
+  --mini-landmark-text: var(--mini-tertiary-text);
+  --mini-landmark-hover: var(--mini-tertiary-hover);
+}
+:where(:where(.minicss) > :is(header, footer):is(.primary, .secondary, .tertiary)):where(.minicss, .minicss *) {
+  background: var(--mini-landmark-background); color: var(--mini-landmark-text);
+  border-color: var(--mini-landmark-background);
+  --mini-text: var(--mini-landmark-text);
+  --mini-muted: var(--mini-landmark-text);
+  --mini-link: var(--mini-landmark-text);
+  --mini-link-hover: var(--mini-landmark-text);
+  --mini-surface-alt: var(--mini-landmark-hover);
+  --mini-focus: var(--mini-landmark-text);
+  --pico-color: var(--mini-landmark-text);
+  --pico-primary: var(--mini-landmark-text);
+  --pico-primary-hover: var(--mini-landmark-text);
+  --pico-muted-color: var(--mini-landmark-text);
+}
+:where(:where(.minicss) > :is(header, footer):is(.primary, .secondary, .tertiary)) :where(h1, h2, h3, h4, h5, h6):where(.minicss, .minicss *) { color: var(--mini-landmark-text); }
+:where(:where(.minicss) > :is(header, footer):is(.primary, .secondary, .tertiary)) :where(.outline, .borderless):where(.minicss, .minicss *) { --mini-button-outline: var(--mini-landmark-text); --mini-button-outline-hover: var(--mini-landmark-text); }
+:where(:where(.minicss) > :is(header, footer).primary-line):where(.minicss, .minicss *) { border-color: var(--mini-primary); }
+:where(:where(.minicss) > :is(header, footer).secondary-line):where(.minicss, .minicss *) { border-color: var(--mini-secondary); }
+:where(:where(.minicss) > :is(header, footer).tertiary-line):where(.minicss, .minicss *) { border-color: var(--mini-tertiary); }
 @media (max-width: 48rem) {
   :where(:where(.minicss) > header:has(nav:not(:has([data-nav-ready])))):where(.minicss, .minicss *) { position: static; }
   :where(nav):where(.minicss, .minicss *) { align-items: center; }

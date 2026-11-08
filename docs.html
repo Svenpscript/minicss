@@ -87,7 +87,7 @@
     &lt;p&gt;De basisopmaak werkt meteen.&lt;/p&gt;
     &lt;button type="button" class="secondary outline"&gt;Een knop&lt;/button&gt;
   &lt;/main&gt;
-  &lt;footer&gt;Mijn project&lt;/footer&gt;
+  &lt;footer&gt;&lt;div&gt;Mijn project&lt;/div&gt;&lt;/footer&gt;
 &lt;/body&gt;
 &lt;/html&gt;</code></pre><h3>3. Optioneel: voeg de bediening toe</h3>
       <p>Wil je het mobiele menu, asidepaneel, dialogen, een themakeuze of bescherming tegen dubbele POST-verzending gebruiken? Kopieer dan ook <code>minicss.js</code> en maak <code>assets/app.js</code> met deze inhoud:</p>
@@ -154,10 +154,10 @@ init();</code></pre><p>Verhoog de themaversie wanneer je een nieuwe export plaat
 &lt;a href="/projecten" class="button tertiary"&gt;Derde linkknop&lt;/a&gt;
 &lt;a href="/projecten" class="button secondary outline"&gt;Secundaire outline-link&lt;/a&gt;
 &lt;a href="/projecten" class="button tertiary outline"&gt;Derde outline-link&lt;/a&gt;
-&lt;/div&gt;</code></pre><p>Een navigatielink behoudt zijn linkbetekenis en begint met <code>class="button"</code>, gevolgd door de gewenste modifiers. Kleur (<code>secondary</code>, <code>tertiary</code>) en uiterlijk (<code>outline</code>, <code>borderless</code>) zijn combineerbaar, ook in navigatie. Outline gebruikt leesbare accenttekst en een bijpassende rand; hover, focus, active en de laadindicator volgen die kleur. In een volledig primaire paginaheader krijgen outline en randloos de contrasterende headertekstkleur.</p><p>Een losse actierij gebruikt zo nodig <code>.actions</code>; afwijkende samengestelde bediening <code>.group</code>. Een zoekformulier met directe <code>input type="search"</code> wordt automatisch samengesteld. Selects blijven native; <code>.classic</code> is alleen nodig om de klassieke picker af te dwingen.</p></section>
+&lt;/div&gt;</code></pre><p>Een navigatielink behoudt zijn linkbetekenis en begint met <code>class="button"</code>, gevolgd door de gewenste modifiers. Kleur (<code>secondary</code>, <code>tertiary</code>) en uiterlijk (<code>outline</code>, <code>borderless</code>) zijn combineerbaar, ook in navigatie. Outline gebruikt leesbare accenttekst en een bijpassende rand; hover, focus, active en de laadindicator volgen die kleur. In een gekleurde paginaheader of paginafooter krijgen outline en randloos de contrasterende tekstkleur van het gekozen accent.</p><p>Een losse actierij gebruikt zo nodig <code>.actions</code>; afwijkende samengestelde bediening <code>.group</code>. Een zoekformulier met directe <code>input type="search"</code> wordt automatisch samengesteld. Selects blijven native; <code>.classic</code> is alleen nodig om de klassieke picker af te dwingen.</p></section>
     <section id="paginaheader">
-      <h2>Paginaheader: primaire lijn of achtergrond</h2>
-      <p>Elke directe header onder body krijgt standaard een horizontale onderlijn in de primaire kleur. Daarvoor is geen klasse nodig. Dit geldt ook zonder nav; headers in cards worden hierdoor niet gewijzigd.</p>
+      <h2>Header en footer: achtergrond of lijnkleur</h2>
+      <p>De directe header en footer onder body lopen over de volle breedte en delen dezelfde basisachtergrond en tekstkleur. Plaats de footerinhoud in een gewone directe div om dezelfde inhoudsbreedte en zijruimte als de navigatie te krijgen. Standaard krijgt de header een primaire onderlijn en de footer een primaire bovenlijn. Dit geldt ook zonder nav; headers en footers in cards worden hierdoor niet gewijzigd.</p>
       <h3>Standaard: primaire onderlijn</h3>
       <pre><code>&lt;header&gt;
   &lt;nav&gt;
@@ -172,7 +172,15 @@ init();</code></pre><p>Verhoog de themaversie wanneer je een nieuwe export plaat
     &lt;ul&gt;&lt;li&gt;&lt;a href="#"&gt;Projecten&lt;/a&gt;&lt;/li&gt;&lt;li&gt;&lt;a href="#"&gt;Over ons&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;
   &lt;/nav&gt;
 &lt;/header&gt;</code></pre>
-      <p>Alleen <code>primary</code> toevoegen op de paginaheader. De achtergrond blijft exact de primaire kleur. Tekst, links, hover en focus worden automatisch afgestemd op de leesbare tekstkleur van dat accent, ook bij een lichte primaire kleur.</p>
+      <p>Gebruik <code>primary</code>, <code>secondary</code> of <code>tertiary</code> op de paginaheader of paginafooter voor de bijbehorende achtergrondkleur. Tekst, links, headings en focus volgen de leesbare tekstkleur van dat accent. De achtergrond blijft exact de gekozen accentkleur.</p>
+      <pre><code>&lt;footer class="secondary"&gt;&lt;div&gt;Secundaire achtergrond&lt;/div&gt;&lt;/footer&gt;
+&lt;footer class="tertiary"&gt;&lt;div&gt;Tertiaire achtergrond&lt;/div&gt;&lt;/footer&gt;</code></pre>
+      <h3>Alleen de lijnkleur veranderen</h3>
+      <p><code>primary-line</code>, <code>secondary-line</code> en <code>tertiary-line</code> veranderen uitsluitend de lijnkleur. Ze werken op header en footer en zijn combineerbaar met een achtergrond.</p>
+      <pre><code>&lt;header class="secondary-line"&gt;Secundaire onderlijn&lt;/header&gt;
+&lt;footer class="tertiary-line"&gt;&lt;div&gt;Tertiaire bovenlijn&lt;/div&gt;&lt;/footer&gt;
+&lt;footer class="secondary tertiary-line"&gt;&lt;div&gt;Secundaire achtergrond, tertiaire lijn&lt;/div&gt;&lt;/footer&gt;</code></pre>
+      <p>Zonder kleurklasse blijven de gewone achtergrond en tekstkleur behouden.</p>
     </section>
     <section id="elementen">
       <h2>Overige gewone elementen</h2>
@@ -202,14 +210,14 @@ init();</code></pre><p>Verhoog de themaversie wanneer je een nieuwe export plaat
       <p>Deze twee klassen horen alleen bij de demonstratiesite. Hun CSS staat in <code>demo/demo.css</code>, niet in <code>dist/minicss.css</code>. Je hebt ze niet nodig om minicss te gebruiken.</p>
       <dl>
         <dt><code>wordmark</code></dt><dd>Maakt van de projectnaam een tekstlogo: Georgia, vet, iets groter en zonder onderstreping. De naam blijft op één regel; een span in die naam krijgt cursief en de linkkleur.</dd>
-        <dt><code>footer-content</code></dt><dd>Zet de onderdelen van de demofooter in een flexrij, met verticale uitlijning, tussenruimte en regelafbreking op smalle schermen. De alinea neemt de resterende ruimte in. Dit regelt niet de positie van de paginafooter; dat doet minicss zelf.</dd>
+        <dt><code>footer-content</code></dt><dd>Zet de onderdelen van de demofooter in een flexrij, met verticale uitlijning, tussenruimte en regelafbreking op smalle schermen. De alinea neemt de resterende ruimte in; de footernavigatie staat als groep rechts, met dezelfde linkopmaak en rechteruitlijning als de header. Dit regelt niet de positie van de paginafooter; dat doet minicss zelf.</dd>
       </dl>
       <p>Hieronder staat exact dezelfde HTML tweemaal: eerst met alleen het framework, daarna met de extra demonstratieopmaak. Zo zie je welk bestand het verschil maakt.</p>
       <pre id="demo-brand-source"><code>&lt;footer&gt;
   &lt;div class="footer-content"&gt;
     &lt;a class="wordmark" href="index.html"&gt;mini&lt;span&gt;css&lt;/span&gt;&lt;/a&gt;
     &lt;p&gt;Mijn project, gebouwd met minicss.&lt;/p&gt;
-    &lt;a href="docs.html"&gt;Handleiding&lt;/a&gt;
+    &lt;nav aria-label="Footernavigatie"&gt;&lt;a href="docs.html"&gt;Handleiding&lt;/a&gt;&lt;/nav&gt;
   &lt;/div&gt;
 &lt;/footer&gt;</code></pre>
     </section>
@@ -229,7 +237,8 @@ setProcessing(form, false);</code></pre><p>De formuliermodule beschermt POST-for
   </main>
   <footer>
     <div class="footer-content"><a class="wordmark" href="index.html">mini<span>css</span></a>
-      <p>Gebaseerd op Pico CSS 2.1.1. MIT.</p><a href="README.md">Volledige documentatie</a>
+      <p>Gebaseerd op Pico CSS 2.1.1. MIT.</p>
+      <nav aria-label="Footernavigatie"><a href="README.md">Volledige documentatie</a></nav>
     </div>
   </footer>
 </body>

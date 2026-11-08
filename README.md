@@ -26,7 +26,7 @@ Op Windows met een geblokkeerd PowerShell-npm-script: gebruik `npm.cmd` in plaat
 </head>
 <body>
   <main><h1>Mijn project</h1><p>Klaar om te beginnen.</p></main>
-  <footer>Mijn project</footer>
+  <footer><div>Mijn project</div></footer>
 </body>
 </html>
 ```
@@ -80,7 +80,7 @@ CSS-laagvolgorde: `@layer pico, minicss`. Minicss gebruikt voornamelijk `:where(
 
 Laad `dist/minicss.min.css`. Gewone HTML krijgt automatisch opmaak, inclusief gecentreerde pagina-inhoud, navigatie, formulieren, cards, tabellen en een aside. De aparte strict-classless- en fluid-classless-bestanden zijn vervallen: dezelfde stylesheet bevat ook de kleine uitzonderingen.
 
-`body > main`, `body > footer` en `body > header > nav` krijgen automatisch breedte en zijruimte. Voor volledige breedte stel je `--mini-content-width: none` in, op de root of een gericht element. Een bijzondere geneste container kan `.container` gebruiken.
+`body > main`, `body > footer > div` en `body > header > nav` krijgen automatisch breedte en zijruimte. Header en footer zelf lopen over de volle breedte; gebruik een gewone directe `div` in de footer om de inhoud met de navigatie uit te lijnen. Voor volledige breedte stel je `--mini-content-width: none` in, op de root of een gericht element. Een bijzondere geneste container kan `.container` gebruiken.
 
 Gebruik geen data-attributen als alternatieve opmaakklassen. De beperkte uitzonderingen zijn `.grid`, `.container`, `.button` voor een navigatielink met knopuiterlijk, `.secondary`, `.tertiary`, `.outline`, `.borderless`, `.full-width`, `.text-start`, `.actions`, `.group`, `.classic`, `.error`, `.muted`, `.sr-only` en `.print-hide`. Alleen toevoegen wanneer je van de automatische basis wilt afwijken. Statuskleuren gebruiken `.success`, `.info`, `.warning` en `.error`.
 
@@ -114,7 +114,7 @@ Native attributen zoals `name`, `type`, `required`, `href`, `action`, `method` e
 
 De documentatie en kleureneditor hebben eigen vormgeving en applicatielogica. Klassen zoals de editorindeling en interne previewhaken zijn geen vereiste voor pagina's die minicss gebruiken. Ook de notificatieknoppen in de demo hebben eigen applicatiegedrag; dat schrijft het framework niet voor.
 
-`wordmark` en `footer-content` staan alleen in `demo/demo.css`: de eerste verzorgt het tekstlogo, de tweede de flexindeling van de demofooter. Ze horen niet bij het framework. De [handleiding](docs.html#demoklassen) toont dezelfde HTML met en zonder deze extra CSS. Bij de HTML-fragmenten staan werkende voorbeelden met uitsluitend de frameworkstylesheet; ze kunnen ook als aparte pagina worden geopend.
+`wordmark` en `footer-content` staan alleen in `demo/demo.css`: de eerste verzorgt het tekstlogo, de tweede de flexindeling van de demofooter, met de footernavigatie als rechts uitgelijnde groep. Ze horen niet bij het framework. De [handleiding](docs.html#demoklassen) toont dezelfde HTML met en zonder deze extra CSS. Bij de HTML-fragmenten staan werkende voorbeelden met uitsluitend de frameworkstylesheet; ze kunnen ook als aparte pagina worden geopend.
 
 ## Variabelen
 
@@ -246,7 +246,7 @@ Een disabled link kent geen native `disabled`. Gebruik `aria-disabled="true"` en
 
 Gebruik een echt afmeldformulier en de CSRF-bescherming van je backend. Navigatieformulieren krijgen dezelfde maat en uitlijning als links en worden nooit automatisch veldgrids. Op smalle schermen toont JS de menuknop en verbergt de links tot openen. Focus gaat naar de eerste link; Escape sluit en herstelt focus. Het menu kan verticaal scrollen. Zonder JS blijven de links zichtbaar en wordt de mobiele paginaheader statisch, zodat een lange navigatie geen ankerdoelen bedekt. De paginafooter staat onderaan een korte pagina en volgt de inhoud bij een lange pagina; hij is nooit fixed.
 
-Elke directe `body > header` krijgt een onderlijn van `1px` in `--mini-primary`, ook zonder navigatie. Met `<header class="primary">` kies je een volledig primaire achtergrond. De generator levert de bijpassende zwarte of witte tekstkleur; tekst, gewone links, headings en focus volgen die kleur. Outline en randloos gebruiken in deze header dezelfde contrasterende tekstkleur. De nav-hoverachtergrond gebruikt de afgeleide primaire hoverkleur. De regel is beperkt tot de paginaheader en raakt cardheaders niet. De [handleiding](docs.html#paginaheader) toont beide uitvoeringen.
+De directe paginaheader en paginafooter lopen over de volle breedte en gebruiken dezelfde achtergrond en tekstkleur, met standaard een primaire lijn van 1px: onder de header en boven de footer. Zonder klasse is er geen accentachtergrond. Met `primary`, `secondary` of `tertiary` kies je op beide elementen de bijbehorende achtergrond, met leesbare tekst, links, headings en focus. Outline en randloos volgen die tekstkleur; de nav-hoverachtergrond volgt de hoverkleur van het gekozen accent. Met `primary-line`, `secondary-line` of `tertiary-line` wijzig je uitsluitend de lijnkleur. Achtergrond en lijn zijn combineerbaar, bijvoorbeeld `<footer class="secondary tertiary-line">`. Deze regels raken geen headers of footers in cards. De [handleiding](docs.html#paginaheader) toont de varianten.
 
 ## Formulieren en selects
 
