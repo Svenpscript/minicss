@@ -124,7 +124,7 @@ Stel waarden in op `:root` of op een gerichte container. De rootlettergrootte is
 | --- | --- | --- |
 | `--mini-font-size` | `100%` | Basislettergrootte |
 | `--mini-text-small` | `.875rem` | Kleine tekst |
-| `--mini-heading-1` | `clamp(2.25rem, 5vw, 3.5rem)` | H1 |
+| `--mini-heading-1` | `clamp(2rem, 3vw, 2.25rem)` | H1 |
 | `--mini-heading-2` | `1.75rem` | H2 |
 | `--mini-space` | `1rem` | Algemene afstand; koppelt ook Pico spacing |
 | `--mini-radius` | `.6rem` | Algemene afronding; radio’s en spinners blijven rond |

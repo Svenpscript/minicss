@@ -2604,7 +2604,7 @@ textarea,
   --mini-space: 1rem;
   --mini-font-size: 100%;
   --mini-text-small: .875rem;
-  --mini-heading-1: clamp(2.25rem, 5vw, 3.5rem);
+  --mini-heading-1: clamp(2rem, 3vw, 2.25rem);
   --mini-heading-2: 1.75rem;
   --mini-content-width: 76rem;
   --mini-gutter: clamp(1rem, 3vw, 2rem);

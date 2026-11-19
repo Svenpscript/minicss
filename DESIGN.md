@@ -4,7 +4,7 @@ De demo is een leesbare componenthandleiding; de thema-editor is een bedieningst
 
 - Standaardpalet van AI in het onderwijs: primair `#30476f`, tweede accent `#354783`, lichte achtergrond `#f6f7f6` en tekst `#182e46`, met een afgeleide donkere variant. De gekozen accentvullingen blijven exact gelijk in beide thema's, met passende zwarte/witte tekst en afzonderlijke contrastgrenzen. Het derde accent staat aanvankelijk uit.
 - Lopende tekst gebruikt Pico's lokale system-fontstack. Alleen het compacte woordmerk gebruikt Georgia; code gebruikt de monospace-stack van Pico. Geen externe fontafhankelijkheid.
-- Body 100%; kleine tekst `.875rem`; H1 `clamp(2.25rem, 5vw, 3.5rem)`; H2 `1.75rem`. Alle schalen zijn afzonderlijk instelbaar.
+- Body 100%; kleine tekst `.875rem`; H1 `clamp(2rem, 3vw, 2.25rem)`; H2 `1.75rem`. Alle schalen zijn afzonderlijk instelbaar.
 - Inhoud maximaal `76rem`; intrinsieke grids minimaal `16rem`; gridafstand `1.5rem`. De hoofdaside gebruikt `17rem`, met `3rem` afstand.
 - Eén `.grid` voor formulieren en andere wrappers; kolombreedte via `--mini-grid-min`. De gewone stylesheet gebruikt semantische HTML als basis; kleine klassen blijven beschikbaar voor expliciete uitzonderingen. Dubbele data-opmaakhaken vervallen. Een directe aside vóór de hoofdinhoudwrapper staat links, erna rechts; op smalle schermen blijft de documentvolgorde behouden.
 - Eén afrondingstoken: `--mini-radius: .6rem`. Alleen bewust ronde elementen en controls met native ronde betekenis blijven rond.
